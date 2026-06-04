@@ -1,10 +1,10 @@
 # Roman Space Telescope Crossword Puzzle
 
-An interactive browser-based crossword puzzle built with [Streamlit](https://streamlit.io), themed around the [Nancy Grace Roman Space Telescope](https://roman.gsfc.nasa.gov/) mission.
-
 <a href="https://romancrossword.streamlit.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Play%20Now-brightgreen?style=for-the-badge" alt="Play Now"/>
+  <img src="https://img.shields.io/badge/Play%20Now-brightgreen?style=for-the-badge" alt="Play Now!"/>
 </a>
+
+An interactive browser-based crossword puzzle built with [Streamlit](https://streamlit.io), themed around the [Nancy Grace Roman Space Telescope](https://roman.gsfc.nasa.gov/) mission.
 
 ## Overview
 
