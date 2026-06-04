@@ -2,6 +2,8 @@
 
 An interactive browser-based crossword puzzle built with [Streamlit](https://streamlit.io), themed around the [Nancy Grace Roman Space Telescope](https://roman.gsfc.nasa.gov/) mission.
 
+[Play the game online here!](https://romancrossword.streamlit.app/)
+
 ## Overview
 
 Each session generates a unique crossword from a curated bank of clues covering Roman mission science, instrumentation, key personnel, partner observatories, and cosmology concepts. The game runs entirely in the browser — no backend state is required beyond the Streamlit session.
@@ -32,8 +34,6 @@ Each session generates a unique crossword from a curated bank of clues covering 
 | `streamlit>=1.30.0` | Web app framework — renders the UI and manages session state |
 | `Pillow>=10.0.0` | Opens the PNG icon file passed to `st.set_page_config` |
 
-All other imports (`json`, `os`, `random`, `dataclasses`, `typing`) are Python standard library.
-
 ## Running Locally
 
 ```bash
@@ -46,7 +46,7 @@ The app will open in your default browser at `http://localhost:8501`.
 ## How the Puzzle Generator Works
 
 1. **Word selection** (`_select_words`) — picks words greedily by character-overlap potential so that the chosen set is likely to intersect well on the grid.
-2. **Placement** (`generate_crossword` / `_attempt`) — runs up to 200 randomised attempts. Each attempt anchors the longest word horizontally, then iterates up to 5 passes over the remaining words, placing each at the candidate position with the highest intersection score.
+2. **Placement** (`generate_crossword` / `_attempt`) — runs up to 200 randomized attempts. Each attempt anchors the longest word horizontally, then iterates up to 5 passes over the remaining words, placing each at the candidate position with the highest intersection score.
 3. **Scoring** — placements are scored by number of letter crossings (dominant term), bounding-box area (compact is better), and aspect-ratio deviation (square grids preferred). The best attempt across all 200 runs is kept.
 4. **Grid limits** — the grid is hard-capped at 15 rows × 20 columns so it fits comfortably in the browser at the configured cell size.
 5. **Numbering** — cells are numbered left-to-right, top-to-bottom following standard crossword convention.
