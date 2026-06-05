@@ -122,12 +122,12 @@ def start_game() -> None:
 
     # Try three filler-pool sizes; pick the densest result.
     for n_filler in [20, 25, 18]:
-        filler_pairs = _select_filler(FILLER_CLUES, n_filler)
-        selected     = {w for w, _ in filler_pairs}
-        fill_pool    = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
+        skeleton_pairs = _select_filler(FILLER_CLUES, n_filler)
+        selected       = {w for w, _ in skeleton_pairs}
+        fill_pool      = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
 
         cw = generate_crossword(
-            filler_pairs,
+            skeleton_pairs,
             filler_pairs=fill_pool,
             max_attempts=150,
             themed_all=themed_all,
@@ -140,11 +140,11 @@ def start_game() -> None:
             best_cw = cw
 
     if best_cw is None:
-        filler_pairs = _select_filler(FILLER_CLUES, 20)
-        selected     = {w for w, _ in filler_pairs}
-        fill_pool    = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
+        skeleton_pairs = _select_filler(FILLER_CLUES, 20)
+        selected       = {w for w, _ in skeleton_pairs}
+        fill_pool      = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
         best_cw = generate_crossword(
-            filler_pairs,
+            skeleton_pairs,
             filler_pairs=fill_pool,
             max_attempts=150,
             themed_all=themed_all,
