@@ -6,8 +6,15 @@ import streamlit as st
 from PIL import Image
 
 from crossword_generator import CrosswordData, generate_crossword
+from filler_bank import FILLER_BANK
 
 CLUES: dict[str, str] = dict(st.secrets["clues"])
+# Merge the extended bank first, then let secrets.toml entries override
+# so any hand-curated clues always take priority over the bank defaults.
+FILLER_CLUES: dict[str, str] = {
+    **{w.upper(): c for w, c in FILLER_BANK.items()},
+    **{w.upper(): c for w, c in st.secrets["filler_clues"].items()},
+}
 
 # ---------------------------------------------------------------------------
 # Page config — custom icon
@@ -64,14 +71,16 @@ for _k, _v in {"game_active": False, "crossword": None}.items():
 # ---------------------------------------------------------------------------
 # Word selection & game start
 # ---------------------------------------------------------------------------
-def _select_words(clue_dict: dict, n: int = 20) -> list:
-    pool = list(clue_dict.keys())
+def _select_filler(filler_dict: dict, n: int) -> list:
+    """
+    Pick n filler words whose letter sets overlap well with each other
+    (more shared letters → more intersection opportunities in the grid).
+    """
+    pool = list(filler_dict.keys())
     random.shuffle(pool)
-    selected = [pool.pop(0)]
+    selected: list = []
+
     while len(selected) < n and pool:
-        # Pairwise overlap: sum of crossing potential between w and each selected word.
-        # min(w.count(ch), sel.count(ch)) estimates how many real intersections are possible
-        # for each shared character, which is strictly better than counting unique chars globally.
         def _overlap(w: str) -> int:
             total = 0
             for sel in selected:
@@ -79,24 +88,69 @@ def _select_words(clue_dict: dict, n: int = 20) -> list:
                     total += min(w.count(ch), sel.count(ch))
             return total
 
-        scored = sorted(pool, key=_overlap, reverse=True)
-        # Narrow window: at most 8 candidates, not a full third of the pool
-        top_n = max(3, min(8, len(scored) // 8))
+        def _score_word(w: str) -> float:
+            return _overlap(w) - 0.5 * len(w)
+
+        scored = sorted(pool, key=_score_word, reverse=True)
+        top_n  = max(3, min(8, len(scored) // 8))
         chosen = random.choice(scored[:top_n])
         selected.append(chosen)
         pool.remove(chosen)
-    return [(w, clue_dict[w]) for w in selected]
+
+    return [(w, filler_dict[w]) for w in selected]
+
+
+def _density(cw: CrosswordData) -> float:
+    """Fraction of the bounding-box area occupied by letter cells."""
+    white = sum(cell != "#" for row in cw.grid for cell in row)
+    return white / (cw.rows * cw.cols)
 
 
 def start_game() -> None:
-    pairs = _select_words(CLUES, 20)
-    cw = generate_crossword(pairs)
-    for _ in range(4):
-        if cw is not None and len(cw.placements) >= 12:
-            break
-        pairs = _select_words(CLUES, 20)
-        cw = generate_crossword(pairs)
-    st.session_state.crossword = cw
+    best_cw = None
+    best_den = -1.0
+
+    # All Roman-themed words available for the two-word insertion pass.
+    # Sort by common-letter count so highly-intersectable words are tried first
+    # inside _attempt (they're more likely to slot into a dense filler grid).
+    _COMMON = set("AEIOULNRST")
+    themed_all = sorted(
+        CLUES.items(),
+        key=lambda wc: sum(1 for ch in wc[0].upper() if ch in _COMMON),
+        reverse=True,
+    )
+
+    # Try three filler-pool sizes; pick the densest result.
+    for n_filler in [20, 25, 18]:
+        filler_pairs = _select_filler(FILLER_CLUES, n_filler)
+        selected     = {w for w, _ in filler_pairs}
+        fill_pool    = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
+
+        cw = generate_crossword(
+            filler_pairs,
+            filler_pairs=fill_pool,
+            max_attempts=150,
+            themed_all=themed_all,
+        )
+        if cw is None or len(cw.placements) < 8:
+            continue
+        den = _density(cw)
+        if den > best_den:
+            best_den = den
+            best_cw = cw
+
+    if best_cw is None:
+        filler_pairs = _select_filler(FILLER_CLUES, 20)
+        selected     = {w for w, _ in filler_pairs}
+        fill_pool    = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
+        best_cw = generate_crossword(
+            filler_pairs,
+            filler_pairs=fill_pool,
+            max_attempts=150,
+            themed_all=themed_all,
+        )
+
+    st.session_state.crossword = best_cw
     st.session_state.game_active = True
 
 
@@ -113,17 +167,26 @@ def _build_game_html(cw: CrosswordData) -> tuple[str, int, int]:
     cell_numbers   = {f"{r},{c}": n    for (r, c), n    in cw.cell_to_number().items()}
     cell_to_words  = {f"{r},{c}": keys for (r, c), keys in cw.cell_to_words().items()}
 
+    # Cells belonging to Roman-themed words get a gold highlight
+    themed_cells = [
+        f"{r},{c}"
+        for p in cw.placements if p.is_themed
+        for r, c in p.cells()
+    ]
+
     data = {
         "grid":        cw.grid,
         "rows":        cw.rows,
         "cols":        cw.cols,
         "placements": [
             {"key": p.get_key(), "word": p.word, "clue": p.clue,
-             "row": p.row, "col": p.col, "direction": p.direction, "number": p.number}
+             "row": p.row, "col": p.col, "direction": p.direction,
+             "number": p.number, "isThemed": p.is_themed}
             for p in cw.placements
         ],
-        "cellNumbers": cell_numbers,
-        "cellToWords": cell_to_words,
+        "cellNumbers":  cell_numbers,
+        "cellToWords":  cell_to_words,
+        "themedCells":  themed_cells,
     }
     # Embed JSON safely (guard against "</script>" inside strings)
     data_json = json.dumps(data).replace("</script>", r"<\/script>")
@@ -153,7 +216,9 @@ td.blk {{ background: #222; }}
 td.wht {{ background: #fff; border: 1px solid #888; cursor: pointer;
            transition: background .1s; user-select: none; }}
 td.wht:hover {{ background: #ddf0ff; }}
-td.sel  {{ background: #74c2f5 !important; }}
+td.gld  {{ background: #ffd700 !important; border-color: #b8860b; }}
+td.gld:hover {{ background: #f0c000 !important; }}
+td.sel  {{ background: #74c2f5 !important; border-color: #2e86de !important; }}
 .num {{ position: absolute; top: 2px; left: 2px; font-size: {_NUM}px;
         color: #222; line-height: 1; pointer-events: none; font-family: Arial; }}
 .ltr {{ display: flex; align-items: center; justify-content: center;
@@ -298,6 +363,8 @@ function revealedLetters() {{
 }}
 
 /* ── grid rendering ── */
+const themedSet = new Set(D.themedCells || []);
+
 function renderGrid() {{
   const sc   = selCellSet(selKey);
   const rl   = revealedLetters();
@@ -306,9 +373,14 @@ function renderGrid() {{
     const cells = [];
     for (let c = 0; c < D.cols; c++) {{
       if (D.grid[r][c] === '#') {{ cells.push('<td class="blk"></td>'); continue; }}
-      const cls  = sc.has(r+','+c) ? 'wht sel' : 'wht';
-      const num  = D.cellNumbers[r+','+c];
-      const ltr  = rl[r+','+c] || '';
+      const key   = r + ',' + c;
+      const gold  = themedSet.has(key);
+      const sel   = sc.has(key);
+      // sel overrides gold visually (blue highlight shows active word);
+      // gold class stays on the element so it reappears when deselected.
+      const cls   = 'wht' + (gold ? ' gld' : '') + (sel ? ' sel' : '');
+      const num   = D.cellNumbers[key];
+      const ltr   = rl[key] || '';
       cells.push(
         `<td class="${{cls}}" onclick="cellClick(${{r}},${{c}})">` +
         (num ? `<span class="num">${{num}}</span>` : '') +
@@ -450,6 +522,16 @@ updateProgress();
 # UI
 # ---------------------------------------------------------------------------
 st.markdown('<div class="cw-title">Roman Space Telescope Crossword</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="cw-sub">Standard puzzle with some '
+    '<span style="color:#b8860b;font-weight:700;">Roman-themed</span> clues.</div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    '<div class="cw-sub" style="font-size:1.0rem;">(Puzzle may take several minutes to generate)</div>',
+    unsafe_allow_html=True,
+)
 
 if st.button("New Game", type="primary"):
     start_game()
