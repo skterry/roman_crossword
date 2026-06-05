@@ -5,8 +5,9 @@ import random
 import streamlit as st
 from PIL import Image
 
-from clues import CLUES
 from crossword_generator import CrosswordData, generate_crossword
+
+CLUES: dict[str, str] = dict(st.secrets["clues"])
 
 # ---------------------------------------------------------------------------
 # Page config — custom icon
