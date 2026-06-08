@@ -59,21 +59,82 @@ class CrosswordData:
 # Public API
 # ---------------------------------------------------------------------------
 
+def generate_crossword_themed_first(
+    themed_all: List[Tuple[str, str]],
+    filler_pairs: Optional[List[Tuple[str, str]]] = None,
+    max_attempts: int = 200,
+    min_themed: int = 4,
+    max_themed: int = 7,
+    max_total_words: int = 20,
+) -> Optional[CrosswordData]:
+    """
+    NYT-style themed-first crossword construction.
+
+    Stage 1 – Themed ACROSS words are placed first, edge-anchored:
+              odd-indexed entries start at col 0 (left edge); even-indexed
+              entries end at the rightmost column (right edge).  Each word
+              gets an implicit black-square buffer on its un-anchored end,
+              enforced naturally by the adjacency rules in _valid.
+              Rows are distributed evenly so DOWN words can thread between them.
+
+    Stage 2 – Greedy filler passes.  With only themed words in the grid the
+              first words placed are necessarily DOWN entries (the only ones
+              that can intersect existing letters).  Once those seed letters
+              into non-themed rows, ACROSS fillers follow.  This replicates
+              the spine-and-fill pattern used by NYT constructors.
+
+    Stage 3 – Two-tier fill pass for any remaining singly-covered cells.
+
+    Runs max_attempts times; returns the densest valid result.
+    """
+    best: Optional[CrosswordData] = None
+    best_density = -1.0
+
+    norm_themed  = [(w.upper().strip(), c) for w, c in themed_all]
+    norm_fillers = [(w.upper().strip(), c) for w, c in filler_pairs] if filler_pairs else None
+
+    for _ in range(max_attempts):
+        result = _attempt_themed_first(
+            norm_themed, norm_fillers,
+            min_themed=min_themed,
+            max_themed=max_themed,
+            max_total_words=max_total_words,
+        )
+        if result is None:
+            continue
+
+        n_themed = sum(1 for p in result.placements if p.is_themed)
+        if not (min_themed <= n_themed <= max_themed):
+            continue
+
+        white   = sum(cell != "#" for row in result.grid for cell in row)
+        density = white / (result.rows * result.cols)
+        if density > best_density:
+            best_density = density
+            best = result
+
+    return best
+
+
 def generate_crossword(
     word_clue_pairs: List[Tuple[str, str]],
     filler_pairs: Optional[List[Tuple[str, str]]] = None,
     max_attempts: int = 200,
     themed_all: Optional[List[Tuple[str, str]]] = None,
+    min_themed: int = 4,
+    max_themed: int = 7,
+    max_total_words: int = 20,
 ) -> Optional[CrosswordData]:
     """
     Filler-first crossword construction.
 
-    All words in word_clue_pairs are filler — they build the dense skeleton.
-    After the skeleton is complete, the best-scoring pair of words from
-    themed_all is inserted as Roman-themed entries (falling back to one if
-    a second cannot be placed).
+    word_clue_pairs build the dense skeleton (Stage 1).
+    After the skeleton, min_themed..max_themed words from themed_all are
+    greedily inserted as Roman-themed entries (Stage 2).
+    A fill pass covers any singly-intersected cells (Stage 3), subject to
+    the max_total_words cap.
 
-    Running max_attempts times and keeping the highest-scoring result.
+    Runs max_attempts times and returns the highest-scoring result.
     """
     best: Optional[CrosswordData] = None
     best_score = float("-inf")
@@ -91,7 +152,13 @@ def generate_crossword(
         random.shuffle(shuffled)
         shuffled.sort(key=lambda x: len(x[0]), reverse=True)
 
-        result = _attempt(shuffled, norm_fillers, themed_all=norm_themed)
+        result = _attempt(
+            shuffled, norm_fillers,
+            themed_all=norm_themed,
+            min_themed=min_themed,
+            max_themed=max_themed,
+            max_total_words=max_total_words,
+        )
         if result is None:
             continue
 
@@ -108,11 +175,11 @@ def generate_crossword(
         density = unique_cells / area
 
         attempt_score = (
-            len(result.placements) * 50
-            + density * 600
-            + total_intersections * 60
-            - unchecked_count * 120
+            density * 800
+            + total_intersections * 80
+            - unchecked_count * 150
             + squareness_bonus
+            + len(result.placements) * 20
         )
         if attempt_score > best_score:
             best = result
@@ -125,19 +192,141 @@ def generate_crossword(
 # Internal helpers
 # ---------------------------------------------------------------------------
 
+def _spaced_rows(n: int, max_row: int, min_gap: int = 2) -> Optional[List[int]]:
+    """
+    Return n row indices in [0, max_row] with at least min_gap empty rows
+    between consecutive themed entries (so DOWN words can thread between them).
+    Returns None if n themed words cannot fit.
+    """
+    if n <= 0:
+        return []
+    # Minimum span needed: n rows + (n-1) gaps of min_gap each
+    if n + (n - 1) * min_gap > max_row + 1:
+        return None
+    if n == 1:
+        return [max_row // 2]
+    step = max_row / (n - 1)
+    rows = [round(i * step) for i in range(n)]
+    # Enforce minimum gap after rounding
+    for i in range(1, len(rows)):
+        rows[i] = max(rows[i], rows[i - 1] + min_gap + 1)
+    if rows[-1] > max_row:
+        return None
+    return rows
+
+
+def _attempt_themed_first(
+    themed_candidates: List[Tuple[str, str]],
+    filler_pairs: Optional[List[Tuple[str, str]]],
+    min_themed: int,
+    max_themed: int,
+    max_total_words: int,
+) -> Optional[CrosswordData]:
+    """
+    NYT-style attempt: themed ACROSS entries placed first (edge-anchored),
+    then greedy filler fills the remaining space.
+    """
+    if not themed_candidates:
+        return None
+
+    grid:   _GridDict  = {}
+    placed: List[Dict] = []
+
+    # ── Stage 1: place themed words ─────────────────────────────────────────
+
+    pool = list(themed_candidates)
+    random.shuffle(pool)
+
+    n_themed   = random.randint(min_themed, max_themed)
+    to_place   = pool[:min(n_themed, len(pool))]
+
+    if len(to_place) < min_themed:
+        return None
+
+    max_len    = max(len(w) for w, _ in to_place)
+    # Grid width = longest themed word + 1-cell black-square buffer on the open end.
+    # Left-anchored:  word occupies cols 0 … len-1;  buffer at col len.
+    # Right-anchored: word occupies cols (grid_width-len) … grid_width-1;
+    #                 buffer at col (grid_width-len-1).
+    grid_width = max_len + 1
+
+    row_positions = _spaced_rows(n_themed, ROW_LIMIT - 1, min_gap=2)
+    if row_positions is None:
+        return None
+
+    for i, (row, (word, clue)) in enumerate(zip(row_positions, to_place)):
+        if i % 2 == 0:
+            col = 0                              # left-anchored
+        else:
+            col = max(0, grid_width - len(word)) # right-anchored
+
+        _place_dict(word, row, col, "across", grid)
+        placed.append({
+            "word": word, "clue": clue,
+            "row": row, "col": col, "direction": "across",
+            "is_themed": True,
+        })
+
+    if len(placed) < min_themed:
+        return None
+
+    # ── Stage 2: greedy filler placement ────────────────────────────────────
+    # With only themed ACROSS words in the grid, _candidates will find
+    # DOWN placements that cross their letters first.  Those DOWN words seed
+    # letters into non-themed rows, after which ACROSS fillers can follow.
+    # This naturally replicates the NYT spine-and-fill sequence.
+
+    if filler_pairs:
+        remaining = list(filler_pairs)
+        random.shuffle(remaining)
+        remaining.sort(key=lambda x: len(x[0]), reverse=True)
+
+        for _pass in range(12):
+            still_remaining = []
+            for word, clue in remaining:
+                if len(placed) >= max_total_words:
+                    break
+                cands = _candidates(word, grid)
+                valid = [c for c in cands if _within_limit(word, c, grid)]
+                if not valid:
+                    still_remaining.append((word, clue))
+                    continue
+                best_cand = max(valid, key=lambda x: x["score"])
+                _place_dict(word, best_cand["row"], best_cand["col"],
+                            best_cand["direction"], grid)
+                placed.append({
+                    "word": word, "clue": clue,
+                    "row": best_cand["row"], "col": best_cand["col"],
+                    "direction": best_cand["direction"],
+                })
+            remaining = still_remaining
+            if len(placed) >= max_total_words or not remaining:
+                break
+
+    # ── Stage 3: fill pass for singly-covered cells ──────────────────────────
+    remaining_slots = max_total_words - len(placed)
+    if filler_pairs and remaining_slots > 0:
+        _fill_pass(grid, placed, filler_pairs, max_additional=remaining_slots)
+
+    return _build(placed, grid)
+
+
 def _attempt(
     pairs: List[Tuple[str, str]],
     filler_pairs: Optional[List[Tuple[str, str]]] = None,
     themed_all: Optional[List[Tuple[str, str]]] = None,
+    min_themed: int = 4,
+    max_themed: int = 7,
+    max_total_words: int = 20,
 ) -> Optional[CrosswordData]:
     """
     Stage 1 – filler skeleton (7 greedy passes over all pairs).
-    Stage 2 – score every word in themed_all against the filler grid, then
-              try the top-10 first-word candidates; for each, tentatively
-              place it and search for the best second themed word.  The pair
-              with the highest combined score wins (falls back to one word if
-              no second can be placed).
-    Stage 3 – two-tier fill pass for residual singly-covered cells.
+    Stage 2 – greedy themed-word insertion: score every word in themed_all
+              against the current grid and place them one at a time (best-fit
+              first), until max_themed are placed or no more fit.  Returns
+              None if fewer than min_themed were placed.
+    Stage 3 – two-tier fill pass for residual singly-covered cells, capped
+              so the total word count stays at or below max_total_words.
     """
     grid: _GridDict = {}
     placed: List[Dict] = []
@@ -174,75 +363,49 @@ def _attempt(
     if len(placed) < 3:
         return None
 
-    # Stage 2: place TWO themed words (best-scoring pair; falls back to one)
+    # Stage 2: greedy placement of min_themed..max_themed themed words.
+    # No pre-sorting by length or common-letter count — equal weighting.
+    # Fit score alone determines which word is chosen at each step.
     if themed_all:
         used_words = {p["word"] for p in placed}
+        pool = [(w, c) for w, c in themed_all if w not in used_words]
+        random.shuffle(pool)  # equal weighting across attempts
 
-        # Score every themed word against the current filler grid
-        first_candidates: List[Tuple[float, str, str, Dict]] = []
-        for word, clue in sorted(themed_all, key=lambda x: -len(x[0])):
-            if word in used_words:
-                continue
-            cands = _candidates(word, grid)
-            valid = [c for c in cands if _within_limit(word, c, grid)]
-            if not valid:
-                continue
-            top = max(valid, key=lambda x: x["score"])
-            first_candidates.append((top["score"], word, clue, top))
-
-        first_candidates.sort(key=lambda x: -x[0])
-
-        best_pair_score = float("-inf")
-        best_first_entry: Optional[Tuple[str, str, Dict]] = None
-        best_second_entry: Optional[Tuple[str, str, Dict]] = None
-
-        for sc1, w1, c1, cand1 in first_candidates[:min(10, len(first_candidates))]:
-            # Tentatively place the first word to find the best second
-            tmp_grid = dict(grid)
-            _place_dict(w1, cand1["row"], cand1["col"], cand1["direction"], tmp_grid)
-
-            used_with_first = used_words | {w1}
-            best_sc2 = float("-inf")
-            second_entry: Optional[Tuple[str, str, Dict]] = None
-
-            for w2, clue2 in sorted(themed_all, key=lambda x: -len(x[0])):
-                if w2 in used_with_first:
+        themed_placed = 0
+        while pool and themed_placed < max_themed:
+            scored: List[Tuple[float, str, str, Dict]] = []
+            for word, clue in pool:
+                cands = _candidates(word, grid)
+                valid = [c for c in cands if _within_limit(word, c, grid)]
+                if not valid:
                     continue
-                cands2 = _candidates(w2, tmp_grid)
-                valid2 = [c for c in cands2 if _within_limit(w2, c, tmp_grid)]
-                if not valid2:
-                    continue
-                top2 = max(valid2, key=lambda x: x["score"])
-                if top2["score"] > best_sc2:
-                    best_sc2 = top2["score"]
-                    second_entry = (w2, clue2, top2)
+                top = max(valid, key=lambda x: x["score"])
+                scored.append((top["score"], word, clue, top))
 
-            # Strongly prefer pairs that fit two words; fall back to one
-            pair_score = sc1 + (best_sc2 if second_entry else -1000.0)
-            if pair_score > best_pair_score:
-                best_pair_score = pair_score
-                best_first_entry = (w1, c1, cand1)
-                best_second_entry = second_entry
+            if not scored:
+                break
 
-        if best_first_entry:
-            w, c, cand = best_first_entry
-            _place_dict(w, cand["row"], cand["col"], cand["direction"], grid)
-            placed.append({"word": w, "clue": c,
-                           "row": cand["row"], "col": cand["col"],
-                           "direction": cand["direction"],
+            scored.sort(key=lambda x: -x[0])
+            # Sample from top candidates so each attempt explores different words
+            top_n = max(1, min(5, len(scored)))
+            _, chosen_word, chosen_clue, chosen_cand = random.choice(scored[:top_n])
+
+            _place_dict(chosen_word, chosen_cand["row"], chosen_cand["col"],
+                        chosen_cand["direction"], grid)
+            placed.append({"word": chosen_word, "clue": chosen_clue,
+                           "row": chosen_cand["row"], "col": chosen_cand["col"],
+                           "direction": chosen_cand["direction"],
                            "is_themed": True})
+            pool = [(w, c) for w, c in pool if w != chosen_word]
+            themed_placed += 1
 
-            if best_second_entry:
-                w2, c2, cand2 = best_second_entry
-                _place_dict(w2, cand2["row"], cand2["col"], cand2["direction"], grid)
-                placed.append({"word": w2, "clue": c2,
-                               "row": cand2["row"], "col": cand2["col"],
-                               "direction": cand2["direction"],
-                               "is_themed": True})
+        if themed_placed < min_themed:
+            return None
 
-    # Stage 3: fill pass for singly-covered cells
-    if filler_pairs:
-        _fill_pass(grid, placed, filler_pairs)
+    # Stage 3: fill pass for singly-covered cells, capped at max_total_words
+    remaining_slots = max_total_words - len(placed)
+    if filler_pairs and remaining_slots > 0:
+        _fill_pass(grid, placed, filler_pairs, max_additional=remaining_slots)
 
     return _build(placed, grid)
 
@@ -271,13 +434,15 @@ def _fill_pass(
     grid: _GridDict,
     placed: List[Dict],
     filler_pairs: List[Tuple[str, str]],
+    max_additional: Optional[int] = None,
 ) -> None:
     """
-    Two-tier fill toward full double-coverage.
+    Two-tier fill toward full double-coverage, capped at max_additional words.
 
     Tier 1 – bridge words (≥2 intersections): net-positive for doubly-checked.
     Tier 2 – gap words  (≥1 intersection): best-effort for remaining cells.
     """
+    initial_count = len(placed)
     used = {p["word"] for p in placed}
     pool = [(w, c) for w, c in filler_pairs if w not in used and 3 <= len(w) <= 7]
     random.shuffle(pool)
@@ -292,6 +457,8 @@ def _fill_pass(
     spent: set = set()
 
     def _try_place(r: int, c: int, needed_dir: str, min_intersect: int) -> bool:
+        if max_additional is not None and len(placed) - initial_count >= max_additional:
+            return False
         target = grid[(r, c)]
         for idx in by_letter.get(target, []):
             if idx in spent:

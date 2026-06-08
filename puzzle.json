@@ -1,0 +1,563 @@
+{
+  "grid": [
+    [
+      "R",
+      "O",
+      "M",
+      "A",
+      "N",
+      "#",
+      "#",
+      "I",
+      "N",
+      "E",
+      "P",
+      "T"
+    ],
+    [
+      "A",
+      "R",
+      "U",
+      "R",
+      "U",
+      "#",
+      "E",
+      "#",
+      "O",
+      "#",
+      "I",
+      "O"
+    ],
+    [
+      "#",
+      "A",
+      "#",
+      "E",
+      "T",
+      "#",
+      "M",
+      "O",
+      "B",
+      "C",
+      "A",
+      "P"
+    ],
+    [
+      "E",
+      "T",
+      "A",
+      "#",
+      "R",
+      "A",
+      "G",
+      "#",
+      "L",
+      "#",
+      "S",
+      "#"
+    ],
+    [
+      "C",
+      "E",
+      "L",
+      "T",
+      "I",
+      "C",
+      "#",
+      "D",
+      "E",
+      "P",
+      "T",
+      "H"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "O",
+      "A",
+      "T",
+      "#",
+      "I",
+      "S",
+      "E",
+      "R",
+      "E"
+    ],
+    [
+      "#",
+      "S",
+      "T",
+      "D",
+      "#",
+      "#",
+      "B",
+      "E",
+      "S",
+      "E",
+      "E",
+      "M"
+    ],
+    [
+      "R",
+      "E",
+      "A",
+      "D",
+      "N",
+      "O",
+      "I",
+      "S",
+      "E",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "A",
+      "P",
+      "R",
+      "#",
+      "A",
+      "T",
+      "F",
+      "#",
+      "#",
+      "T",
+      "L",
+      "C"
+    ],
+    [
+      "M",
+      "I",
+      "T",
+      "O",
+      "C",
+      "H",
+      "O",
+      "N",
+      "D",
+      "R",
+      "I",
+      "A"
+    ],
+    [
+      "#",
+      "A",
+      "U",
+      "T",
+      "H",
+      "O",
+      "R",
+      "#",
+      "S",
+      "I",
+      "N",
+      "G"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "C",
+      "O",
+      "S",
+      "M",
+      "O",
+      "L",
+      "O",
+      "G",
+      "Y"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "ROMAN",
+      "clue": "Surname of NASA's first Chief of Astronomy, now the telescope's name",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "ORATE",
+      "clue": "Hold forth",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "ARE",
+      "clue": "Exist",
+      "row": 0,
+      "col": 3,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "NUTRIA",
+      "clue": "Beaver-like aquatic rodent",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "INEPT",
+      "clue": "Bumbling",
+      "row": 0,
+      "col": 7,
+      "direction": "across",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "NOBLESSE",
+      "clue": "___ oblige",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "PIASTRE",
+      "clue": "Egyptian pound fraction",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "TOP",
+      "clue": "Highest point",
+      "row": 0,
+      "col": 11,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "ARURU",
+      "clue": "Babylonian mother goddess",
+      "row": 1,
+      "col": 0,
+      "direction": "across",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "EMG",
+      "clue": "Muscle-activity test, briefly",
+      "row": 1,
+      "col": 6,
+      "direction": "down",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "MOBCAP",
+      "clue": "Frilly cap once worn indoors",
+      "row": 2,
+      "col": 6,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "ETA",
+      "clue": "Flight board figure, briefly",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "RAG",
+      "clue": "Tattered cloth",
+      "row": 3,
+      "col": 4,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "ACT",
+      "clue": "Piece of legislation",
+      "row": 3,
+      "col": 5,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "CELTIC",
+      "clue": "Irish and Welsh language group",
+      "row": 4,
+      "col": 0,
+      "direction": "across",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "TODD",
+      "clue": "Sweeney ___ (Sondheim barber)",
+      "row": 4,
+      "col": 3,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "DEPTH",
+      "clue": "Survey quantity often traded against area",
+      "row": 4,
+      "col": 7,
+      "direction": "across",
+      "number": 21,
+      "is_themed": true
+    },
+    {
+      "word": "DIES",
+      "clue": "Casino cubes",
+      "row": 4,
+      "col": 7,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "PEE",
+      "clue": "Letter after oh",
+      "row": 4,
+      "col": 9,
+      "direction": "down",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "HEM",
+      "clue": "Skirt's edge",
+      "row": 4,
+      "col": 11,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "OAT",
+      "clue": "Oatmeal grain",
+      "row": 5,
+      "col": 3,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "ISERE",
+      "clue": "Rhône tributary in France",
+      "row": 5,
+      "col": 7,
+      "direction": "across",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "STD",
+      "clue": "Sexually transmitted infection, briefly",
+      "row": 6,
+      "col": 1,
+      "direction": "across",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "SEPIA",
+      "clue": "Reddish-brown photo tint",
+      "row": 6,
+      "col": 1,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "TARTU",
+      "clue": "Estonian university city",
+      "row": 6,
+      "col": 2,
+      "direction": "down",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "BESEEM",
+      "clue": "Befit, archaically",
+      "row": 6,
+      "col": 6,
+      "direction": "across",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "BIFORM",
+      "clue": "Having two shapes",
+      "row": 6,
+      "col": 6,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "READNOISE",
+      "clue": "Quantity reduced through up-the-ramp sampling",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 29,
+      "is_themed": true
+    },
+    {
+      "word": "RAM",
+      "clue": "Male sheep",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "NACHO",
+      "clue": "Cheese-topped tortilla chip",
+      "row": 7,
+      "col": 4,
+      "direction": "down",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "OTHOS",
+      "clue": "Roman emperor Otho and others",
+      "row": 7,
+      "col": 5,
+      "direction": "down",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "APR",
+      "clue": "Tax-season month, briefly",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "ATF",
+      "clue": "Federal firearms agency, briefly",
+      "row": 8,
+      "col": 4,
+      "direction": "across",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "TLC",
+      "clue": "Tender loving care, for short",
+      "row": 8,
+      "col": 9,
+      "direction": "across",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "TRIO",
+      "clue": "Threesome",
+      "row": 8,
+      "col": 9,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "LING",
+      "clue": "Cod-family food fish",
+      "row": 8,
+      "col": 10,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "CAGY",
+      "clue": "Cautious and shrewd",
+      "row": 8,
+      "col": 11,
+      "direction": "down",
+      "number": 36,
+      "is_themed": false
+    },
+    {
+      "word": "MITOCHONDRIA",
+      "clue": "Cell's energy-producing organelles",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "OTC",
+      "clue": "Sold without prescription, briefly",
+      "row": 9,
+      "col": 3,
+      "direction": "down",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "DSL",
+      "clue": "Broadband type, briefly",
+      "row": 9,
+      "col": 8,
+      "direction": "down",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "AUTHOR",
+      "clue": "Write, as a novel",
+      "row": 10,
+      "col": 1,
+      "direction": "across",
+      "number": 40,
+      "is_themed": false
+    },
+    {
+      "word": "SING",
+      "clue": "Carry a tune",
+      "row": 10,
+      "col": 8,
+      "direction": "across",
+      "number": 41,
+      "is_themed": false
+    },
+    {
+      "word": "COSMOLOGY",
+      "clue": "Study of the universe's origin, evolution, and fate; a primary Roman mission driver",
+      "row": 11,
+      "col": 3,
+      "direction": "across",
+      "number": 42,
+      "is_themed": true
+    }
+  ]
+}

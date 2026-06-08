@@ -1,20 +1,10 @@
 import json
 import os
-import random
 
 import streamlit as st
 from PIL import Image
 
-from crossword_generator import CrosswordData, generate_crossword
-from filler_bank import FILLER_BANK
-
-CLUES: dict[str, str] = dict(st.secrets["clues"])
-# Merge the extended bank first, then let secrets.toml entries override
-# so any hand-curated clues always take priority over the bank defaults.
-FILLER_CLUES: dict[str, str] = {
-    **{w.upper(): c for w, c in FILLER_BANK.items()},
-    **{w.upper(): c for w, c in st.secrets["filler_clues"].items()},
-}
+from crossword_generator import CrosswordData, WordPlacement
 
 # ---------------------------------------------------------------------------
 # Page config — custom icon
@@ -61,97 +51,41 @@ st.markdown(
 )
 
 # ---------------------------------------------------------------------------
-# Session-state bootstrap
+# Puzzle loader — reads puzzle.json once and caches it for the server lifetime
 # ---------------------------------------------------------------------------
-for _k, _v in {"game_active": False, "crossword": None}.items():
-    if _k not in st.session_state:
-        st.session_state[_k] = _v
 
-
-# ---------------------------------------------------------------------------
-# Word selection & game start
-# ---------------------------------------------------------------------------
-def _select_filler(filler_dict: dict, n: int) -> list:
-    """
-    Pick n filler words whose letter sets overlap well with each other
-    (more shared letters → more intersection opportunities in the grid).
-    """
-    pool = list(filler_dict.keys())
-    random.shuffle(pool)
-    selected: list = []
-
-    while len(selected) < n and pool:
-        def _overlap(w: str) -> int:
-            total = 0
-            for sel in selected:
-                for ch in set(w) & set(sel):
-                    total += min(w.count(ch), sel.count(ch))
-            return total
-
-        def _score_word(w: str) -> float:
-            return _overlap(w) - 0.5 * len(w)
-
-        scored = sorted(pool, key=_score_word, reverse=True)
-        top_n  = max(3, min(8, len(scored) // 8))
-        chosen = random.choice(scored[:top_n])
-        selected.append(chosen)
-        pool.remove(chosen)
-
-    return [(w, filler_dict[w]) for w in selected]
-
-
-def _density(cw: CrosswordData) -> float:
-    """Fraction of the bounding-box area occupied by letter cells."""
-    white = sum(cell != "#" for row in cw.grid for cell in row)
-    return white / (cw.rows * cw.cols)
-
-
-def start_game() -> None:
-    best_cw = None
-    best_den = -1.0
-
-    # All Roman-themed words available for the two-word insertion pass.
-    # Sort by common-letter count so highly-intersectable words are tried first
-    # inside _attempt (they're more likely to slot into a dense filler grid).
-    _COMMON = set("AEIOULNRST")
-    themed_all = sorted(
-        CLUES.items(),
-        key=lambda wc: sum(1 for ch in wc[0].upper() if ch in _COMMON),
-        reverse=True,
+@st.cache_resource
+def _load_puzzle() -> CrosswordData | None:
+    puzzle_path = os.path.join(os.path.dirname(__file__), "puzzle.json")
+    if not os.path.exists(puzzle_path):
+        return None
+    with open(puzzle_path, encoding="utf-8") as f:
+        data = json.load(f)
+    placements = [
+        WordPlacement(
+            word=p["word"],
+            clue=p["clue"],
+            row=p["row"],
+            col=p["col"],
+            direction=p["direction"],
+            number=p["number"],
+            is_themed=p.get("is_themed", False),
+        )
+        for p in data["placements"]
+    ]
+    return CrosswordData(
+        grid=data["grid"],
+        placements=placements,
+        rows=data["rows"],
+        cols=data["cols"],
     )
 
-    # Try three filler-pool sizes; pick the densest result.
-    for n_filler in [20, 25, 18]:
-        skeleton_pairs = _select_filler(FILLER_CLUES, n_filler)
-        selected       = {w for w, _ in skeleton_pairs}
-        fill_pool      = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
 
-        cw = generate_crossword(
-            skeleton_pairs,
-            filler_pairs=fill_pool,
-            max_attempts=150,
-            themed_all=themed_all,
-        )
-        if cw is None or len(cw.placements) < 8:
-            continue
-        den = _density(cw)
-        if den > best_den:
-            best_den = den
-            best_cw = cw
-
-    if best_cw is None:
-        skeleton_pairs = _select_filler(FILLER_CLUES, 20)
-        selected       = {w for w, _ in skeleton_pairs}
-        fill_pool      = [(w, c) for w, c in FILLER_CLUES.items() if w not in selected]
-        best_cw = generate_crossword(
-            skeleton_pairs,
-            filler_pairs=fill_pool,
-            max_attempts=150,
-            themed_all=themed_all,
-        )
-
-    st.session_state.crossword = best_cw
-    st.session_state.game_active = True
+# ---------------------------------------------------------------------------
+# Session-state bootstrap
+# ---------------------------------------------------------------------------
+if "game_active" not in st.session_state:
+    st.session_state.game_active = False
 
 
 # ---------------------------------------------------------------------------
@@ -231,7 +165,8 @@ td.sel  {{ background: #74c2f5 !important; border-color: #2e86de !important; }}
           width: 420px; flex-shrink: 0; }}
 
 /* ── answer area ── */
-#clue-label {{ font-size: 1.35rem; font-weight: 700; color: #0d1b2a; margin-bottom: 4px; }}
+#clue-label {{ font-size: 1.35rem; font-weight: 700; color: #0d1b2a; margin-bottom: 4px;
+               line-height: 1.3; overflow-wrap: anywhere; }}
 #clue-hint  {{ font-size: 1.1rem;  color: #666; margin-bottom: 8px; }}
 #input-row  {{ display: flex; gap: 10px; align-items: center; }}
 #answerInput {{
@@ -449,7 +384,7 @@ function submitAnswer() {{
       document.getElementById('answerInput').disabled = true;
       document.getElementById('submitBtn').disabled   = true;
     }} else {{
-      setTimeout(() => selectWord(unsolved[0].key), 700);
+      // no auto-advance; user picks the next clue freely
     }}
   }} else {{
     msg.textContent = '✗ Not quite — try again!';
@@ -510,8 +445,14 @@ updateProgress();
         len([p for p in cw.placements if p.direction == "across"]),
         len([p for p in cw.placements if p.direction == "down"]),
     )
-    # Answer area + progress + clue list
-    panel_h = 230 + max_clues_per_col * 42
+    # Answer area + progress + clue list. The selected-clue label wraps freely,
+    # so reserve room for the longest clue (≈110 chars + "NN ACROSS: " prefix →
+    # up to ~4 lines in the 420px panel) to keep the bottom of the clue list
+    # from being clipped by the fixed iframe height.
+    longest_clue = max((len(p.clue) for p in cw.placements), default=0)
+    clue_label_lines = max(1, -(-(longest_clue + 12) // 34))   # ~34 chars/line
+    clue_label_h = clue_label_lines * 30
+    panel_h = 200 + clue_label_h + max_clues_per_col * 42
 
     total_w = grid_w + 20 + panel_w + 28   # grid | gap | panel | body padding
     total_h = max(grid_h, panel_h) + 28
@@ -523,30 +464,26 @@ updateProgress();
 # ---------------------------------------------------------------------------
 st.markdown('<div class="cw-title">Roman Space Telescope Crossword</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="cw-sub">Standard puzzle with some '
+    '<div class="cw-sub">Weekly NYT-style puzzle with some '
     '<span style="color:#b8860b;font-weight:700;">Roman-themed</span> clues.</div>',
     unsafe_allow_html=True,
 )
 
-st.markdown(
-    '<div class="cw-sub" style="font-size:1.0rem;">(Puzzle may take several minutes to generate)</div>',
-    unsafe_allow_html=True,
-)
+cw = _load_puzzle()
+
+if cw is None:
+    st.error(
+        "**puzzle.json not found.** "
+        "Run `python generate_puzzle.py` from the project directory to generate it."
+    )
+    st.stop()
 
 if st.button("New Game", type="primary"):
-    start_game()
+    st.session_state.game_active = True
     st.rerun()
 
 if not st.session_state.game_active:
-    st.info("Click **New Game** to generate your puzzle.")
-    st.stop()
-
-cw: CrosswordData = st.session_state.crossword
-if cw is None:
-    st.error("Could not generate a crossword — please try again.")
-    if st.button("Retry"):
-        start_game()
-        st.rerun()
+    st.info("Click **New Game** to start the puzzle.")
     st.stop()
 
 html_str, w, h = _build_game_html(cw)

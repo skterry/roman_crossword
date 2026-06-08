@@ -19,6 +19,14 @@ build/
 # Streamlit
 .streamlit/
 
+# Puzzle generation inputs (large; needed only to build puzzle.json, not at runtime)
+*.tsv
+*.dict
+
+# Generated puzzle artifacts — only the chosen puzzle.json is committed
+puzzle[0-9]*.json
+puzzle.json.bak
+
 # macOS
 .DS_Store
 
