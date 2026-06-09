@@ -244,7 +244,7 @@ hr.divider {{ border: none; border-top: 1px solid #ddd; margin: 12px 0; }}
       <button id="submitBtn" onclick="submitAnswer()">Submit ↵</button>
     </div>
     <div id="feedbackMsg"></div>
-    <button id="giveUpBtn" onclick="giveUp()">Give Up</button>
+    <!-- <button id="giveUpBtn" onclick="giveUp()">Give Up</button> -->
     <div id="prog-wrap">
       <div id="prog-text"></div>
       <div id="prog-outer"><div id="prog-inner" style="width:0%"></div></div>
@@ -295,6 +295,26 @@ function revealedLetters() {{
     }}
   }}
   return m;
+}}
+
+/* Mark any word whose cells are all filled by crossing answers as solved.
+   Loops until stable, since one auto-solve can complete another. */
+function autoSolveCrossed() {{
+  let changed = true;
+  while (changed) {{
+    changed = false;
+    const rl = revealedLetters();
+    for (const p of D.placements) {{
+      if (revealed.has(p.key)) continue;
+      let complete = true;
+      for (let i = 0; i < p.word.length; i++) {{
+        const r = p.row + (p.direction === 'down'   ? i : 0);
+        const c = p.col + (p.direction === 'across' ? i : 0);
+        if (!rl[r + ',' + c]) {{ complete = false; break; }}
+      }}
+      if (complete) {{ revealed.add(p.key); changed = true; }}
+    }}
+  }}
 }}
 
 /* ── grid rendering ── */
@@ -373,6 +393,7 @@ function submitAnswer() {{
   const msg   = document.getElementById('feedbackMsg');
   if (guess === p.word) {{
     revealed.add(selKey);
+    autoSolveCrossed();
     msg.textContent  = '✓ Correct!';
     msg.style.color  = '#2a8c2a';
     renderGrid();
@@ -464,7 +485,7 @@ updateProgress();
 # ---------------------------------------------------------------------------
 st.markdown('<div class="cw-title">Roman Space Telescope Crossword</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="cw-sub">Weekly NYT-style puzzle with some '
+    '<div class="cw-sub">A weekly NYT-style puzzle with some '
     '<span style="color:#b8860b;font-weight:700;">Roman-themed</span> clues.</div>',
     unsafe_allow_html=True,
 )
