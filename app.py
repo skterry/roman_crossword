@@ -249,7 +249,7 @@ hr.divider {{ border: none; border-top: 1px solid #ddd; margin: 12px 0; }}
       <div id="prog-text"></div>
       <div id="prog-outer"><div id="prog-inner" style="width:0%"></div></div>
     </div>
-    <div id="completion">🎉 Puzzle complete — click New Game to play again!</div>
+    <div id="completion">🎉 Puzzle complete — Congratulations!</div>
     <div id="gave-up">Answers revealed — click New Game to play again.</div>
     <hr class="divider">
     <div class="clue-lists">
