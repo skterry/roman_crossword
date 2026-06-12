@@ -2,7 +2,9 @@
 
 <p>
   Hosted on Streamlit
-  <img src="https://streamlit.io/" alt="Streamlit" height="22" align="top"/>
+  <a href="https://streamlit.io/" target="_blank">
+    <img src="icon/streamlit_icon.png" alt="Streamlit" height="22" align="top"/>
+  </a>
 </p>
 
 <a href="https://romancrossword.streamlit.app/" target="_blank">
