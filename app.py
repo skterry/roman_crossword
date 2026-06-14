@@ -56,7 +56,10 @@ st.markdown(
 # ---------------------------------------------------------------------------
 
 @st.cache_resource
-def _load_puzzle() -> CrosswordData | None:
+def _load_puzzle(mtime: float) -> CrosswordData | None:
+    # mtime is part of the cache key (no leading underscore, so Streamlit hashes
+    # it) — the cache auto-invalidates whenever puzzle.json is replaced (e.g. the
+    # weekly push), even if the Streamlit server process is reused on redeploy.
     puzzle_path = os.path.join(os.path.dirname(__file__), "puzzle.json")
     if not os.path.exists(puzzle_path):
         return None
@@ -509,7 +512,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-cw = _load_puzzle()
+_puzzle_path = os.path.join(os.path.dirname(__file__), "puzzle.json")
+_puzzle_mtime = os.path.getmtime(_puzzle_path) if os.path.exists(_puzzle_path) else 0.0
+cw = _load_puzzle(_puzzle_mtime)
 
 if cw is None:
     st.error(
