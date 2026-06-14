@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 
@@ -82,10 +83,28 @@ def _load_puzzle() -> CrosswordData | None:
 
 
 # ---------------------------------------------------------------------------
+# Last week's solution image (archived under past_boards/ by render_solution.py)
+# ---------------------------------------------------------------------------
+
+def _latest_solution_png() -> str | None:
+    """Path to the most recently archived solution PNG, or None if none exist.
+
+    Filenames are dated (solution_YYYY-MM-DD.png), so lexical sort == newest last.
+    """
+    folder = os.path.join(os.path.dirname(__file__), "past_boards")
+    if not os.path.isdir(folder):
+        return None
+    pngs = sorted(glob.glob(os.path.join(folder, "solution_*.png")))
+    return pngs[-1] if pngs else None
+
+
+# ---------------------------------------------------------------------------
 # Session-state bootstrap
 # ---------------------------------------------------------------------------
 if "game_active" not in st.session_state:
     st.session_state.game_active = False
+if "show_solution" not in st.session_state:
+    st.session_state.show_solution = False
 
 
 # ---------------------------------------------------------------------------
@@ -499,9 +518,23 @@ if cw is None:
     )
     st.stop()
 
-if st.button("New Game", type="primary"):
-    st.session_state.game_active = True
-    st.rerun()
+btn_col1, btn_col2, _ = st.columns([1, 1.6, 4])
+with btn_col1:
+    if st.button("New Game", type="primary"):
+        st.session_state.game_active = True
+        st.session_state.show_solution = False
+        st.rerun()
+with btn_col2:
+    _sol_png = _latest_solution_png()
+    if _sol_png and st.button("View last week's solution"):
+        st.session_state.show_solution = not st.session_state.show_solution
+
+if st.session_state.show_solution:
+    if _sol_png:
+        st.image(_sol_png, caption="Last week's completed solution", width=620)
+        st.caption("Click **View last week's solution** again to hide.")
+    else:
+        st.info("No past solution is available yet.")
 
 if not st.session_state.game_active:
     st.info("Click **New Game** to start the puzzle.")
