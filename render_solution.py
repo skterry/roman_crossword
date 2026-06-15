@@ -52,7 +52,8 @@ def _cell_numbers(data: dict) -> dict:
     return nums
 
 
-def render(data: dict, output_path: str, title: str | None = None) -> None:
+def render(data: dict, output_path: str, title: str | None = None,
+           dpi: int = 300) -> None:
     rows, cols = data["rows"], data["cols"]
     grid = data["grid"]
     themed = _themed_cells(data)
@@ -61,7 +62,7 @@ def render(data: dict, output_path: str, title: str | None = None) -> None:
     cell = 1.0
     fig_w = cols * 0.5
     fig_h = rows * 0.5 + (0.5 if title else 0.0)
-    fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=200)
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=dpi)
 
     for r in range(rows):
         for c in range(cols):
@@ -98,7 +99,7 @@ def render(data: dict, output_path: str, title: str | None = None) -> None:
         ax.set_title(title, fontsize=11, color="#0b3d91",
                      fontweight="bold", pad=8)
 
-    fig.savefig(output_path, bbox_inches="tight", pad_inches=0.15,
+    fig.savefig(output_path, dpi=dpi, bbox_inches="tight", pad_inches=0.15,
                 facecolor="white")
     plt.close(fig)
 
@@ -111,13 +112,15 @@ def main() -> None:
     ap.add_argument("-o", "--output", default=None,
                     help="Output PNG path (default: solution.png beside input)")
     ap.add_argument("--title", default=None, help="Optional title text")
+    ap.add_argument("--dpi", type=int, default=300,
+                    help="Output resolution in pixels per inch (default: 300)")
     args = ap.parse_args()
 
     src = Path(args.puzzle)
     with open(src, encoding="utf-8") as f:
         data = json.load(f)
     out = args.output or str(src.with_name("solution.png"))
-    render(data, out, title=args.title)
+    render(data, out, title=args.title, dpi=args.dpi)
     print(f"Wrote {out}")
 
 
