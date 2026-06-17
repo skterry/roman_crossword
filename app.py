@@ -234,6 +234,8 @@ td.ok .ci { color: #1a7a1a; }
        background: transparent; text-align: center; padding: 0;
        font-family: Georgia, serif; font-weight: bold; font-size: var(--ltr);
        color: #111; text-transform: uppercase; caret-color: transparent; outline: none; }
+/* locked (solved) cells: keep the letter green & solid, not browser-greyed */
+.ci:disabled { color: #1a7a1a; -webkit-text-fill-color: #1a7a1a; opacity: 1; cursor: default; }
 
 /* ── side panel (progress + clue lists) ── */
 #panel { width: 340px; flex-shrink: 0; background: #fff; border-radius: 8px;
@@ -410,8 +412,11 @@ function advance(r, c){
   const p = byKey(selKey); if (!p) return;
   const cells = cellsOf(p);
   const i = cells.indexOf(r + ',' + c);
-  for (let j = i + 1; j < cells.length; j++){ focusKey(cells[j]); return; }
-  paint();   // last cell of the word: stay put
+  // hop to the next still-editable cell (skip letters locked by a solved word)
+  for (let j = i + 1; j < cells.length; j++){
+    if (!solvedCells.has(cells[j])){ focusKey(cells[j]); return; }
+  }
+  paint();   // no editable cell ahead: stay put
 }
 function focusKey(k){
   const inp = inputs[k]; if (!inp) return;
@@ -425,10 +430,12 @@ function onKey(r, c, e){
       e.preventDefault();
       const p = byKey(selKey); if (!p) return;
       const cells = cellsOf(p); const i = cells.indexOf(key);
-      if (i > 0){
-        const pk = cells[i-1];
+      for (let j = i - 1; j >= 0; j--){   // skip locked letters when stepping back
+        const pk = cells[j];
+        if (solvedCells.has(pk)) continue;
         entries[pk] = ''; if (inputs[pk]) inputs[pk].value = '';
         recompute(); focusKey(pk); updateClueBar();
+        break;
       }
     }
     return;                      // non-empty: the input event clears it
@@ -472,12 +479,17 @@ function recompute(){
 function paint(){
   const wc = selKey ? new Set(cellsOf(byKey(selKey))) : new Set();
   for (const key in inputs){
-    const td = inputs[key].parentElement;
+    const inp = inputs[key];
+    const locked = solvedCells.has(key);   // cell belongs to a fully-correct word
+    // Lock correct cells: a disabled input can't be focused, highlighted or
+    // edited, so solved letters stay put and tapping them does nothing.
+    inp.disabled = locked;
+    const td = inp.parentElement;
     td.className = 'wht'
       + (themedSet.has(key)    ? ' gld'  : '')
       + (wc.has(key)           ? ' word' : '')
-      + (key === selCell       ? ' cur'  : '')
-      + (solvedCells.has(key)  ? ' ok'   : '');
+      + (key === selCell && !locked ? ' cur' : '')
+      + (locked                ? ' ok'   : '');
   }
 }
 function updateClueBar(){
