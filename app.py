@@ -120,23 +120,27 @@ if "show_solution" not in st.session_state:
 # ---------------------------------------------------------------------------
 # Self-contained HTML/JS game builder
 #
-# The grid, clue bar and clue lists all live inside one iframe. Layout is
-# responsive: the iframe is embedded with width="stretch"/height="content"
-# (see the render call at the bottom), so Streamlit sizes it fluidly and
+# Interaction model: pick a clue (tap a cell or a clue button), type the whole
+# answer into the separate answer field, and submit. A correct guess reveals
+# the word's letters on the board (and any crossings it completes); revealed
+# letters are plain display text, so they can't be edited or deleted.
+#
+# Layout is responsive. The iframe is embedded with width="stretch" /
+# height="content" (see the render call), so Streamlit sizes it fluidly and
 # auto-measures its height. Inside, a viewport meta + CSS media query let the
-# same markup sit side-by-side on desktop and stack/scale on phones. Answers
-# are typed directly into the cells (one <input> per white square) rather than
-# into a separate answer box, which is the natural mobile crossword UX.
+# same markup sit side-by-side on desktop and stack/scale on phones. The clue
+# + answer field live in a bar above the grid so that, on a phone, tapping a
+# cell focuses the input near the top of the screen.
 #
 # _CELL is the *maximum* cell size in px; on narrow screens the cells shrink
 # via `min(_CELL px, (100vw - margin) / cols)` so the whole board fits the
-# screen width. The number/letter font sizes derive from --cell in CSS.
+# screen width. Number/letter font sizes derive from --cell in CSS.
 # ---------------------------------------------------------------------------
 _CELL = 44   # max cell square size in px (shrinks to fit narrow screens)
 
 # Below this viewport width the grid and panel stack vertically (phones /
-# narrow tablets). Chosen so the side-by-side layout only stays while it
-# actually fits: grid (cols*_CELL) + gap + panel.
+# narrow tablets), chosen so the side-by-side layout only stays while it fits:
+# grid (cols*_CELL) + gap + panel.
 _STACK_BELOW = 920
 
 
@@ -194,21 +198,30 @@ body { font-family: Arial, sans-serif; padding: 12px; font-size: 18px; -webkit-t
   --ltr:  calc(var(--cell) * 0.58);
 }
 
-/* ── current-clue bar (sits above the board) ── */
-#clue-bar {
+/* ── clue + answer bar (sits above the board) ── */
+#control {
   position: sticky; top: 0; z-index: 10;
   max-width: 1080px; margin: 0 auto 12px;
   background: #fff; border: 1px solid #d8e0ea; border-left: 5px solid #2e86de;
-  border-radius: 8px; padding: 9px 14px; min-height: 2.6em;
+  border-radius: 8px; padding: 10px 14px;
   box-shadow: 0 1px 4px rgba(0,0,0,.10);
-  display: flex; align-items: baseline; gap: 10px;
 }
-#clue-bar .cb-num  { font-weight: 800; color: #0b3d91; white-space: nowrap; }
-#clue-bar .cb-clue { flex: 1; font-size: 1.15rem; color: #0d1b2a; line-height: 1.3; overflow-wrap: anywhere; }
-#clue-bar .cb-len  { color: #888; }
-#clue-bar .cb-stat { font-weight: 800; font-size: 1.3rem; }
-#clue-bar .cb-stat.ok  { color: #1a7a1a; }
-#clue-bar .cb-stat.bad { color: #c0392b; }
+#clue-label { font-size: 1.2rem; color: #0d1b2a; line-height: 1.3; margin-bottom: 8px; overflow-wrap: anywhere; }
+#clue-label .ql-num  { color: #0b3d91; font-weight: 800; }
+#clue-label .ql-hint { color: #888; font-weight: 600; font-size: 0.95rem; }
+#input-row  { display: flex; gap: 10px; align-items: center; }
+#answerInput {
+  flex: 1; min-width: 0; font-size: 1.2rem; padding: 8px 12px;
+  border: 2px solid #ccc; border-radius: 6px; outline: none; text-transform: uppercase;
+}
+#answerInput:focus { border-color: #2e86de; }
+#submitBtn {
+  font-size: 1.05rem; padding: 9px 18px; background: #2e86de; color: #fff;
+  border: none; border-radius: 6px; cursor: pointer; font-weight: 700; white-space: nowrap;
+}
+#submitBtn:hover    { background: #1a6fc4; }
+#submitBtn:disabled { background: #aaa; cursor: default; }
+#feedbackMsg { font-size: 1.05rem; font-weight: 600; min-height: 1.4em; margin-top: 6px; }
 
 /* ── layout ── */
 #app { display: flex; flex-direction: row; gap: 20px; align-items: flex-start;
@@ -218,24 +231,21 @@ body { font-family: Arial, sans-serif; padding: 12px; font-size: 18px; -webkit-t
              color: rgba(0,0,0,0.30); letter-spacing: 0.5px;
              pointer-events: none; user-select: none; }
 
-/* ── crossword grid ── */
+/* ── crossword grid (display only) ── */
 table.cw { border-collapse: collapse; border: 2px solid #222; background: #222; }
 td { width: var(--cell); height: var(--cell); padding: 0; position: relative; }
 td.blk { background: #222; }
-td.wht { background: #fff; border: 1px solid #888; }
-td.gld { background: #ffd700; border-color: #b8860b; }
-td.word { background: #cfe8ff; }
-td.word.gld { background: #ffe680; }
-td.cur  { background: #74c2f5 !important; border-color: #2e86de !important; }
-td.ok .ci { color: #1a7a1a; }
+td.wht { background: #fff; border: 1px solid #888; cursor: pointer;
+         transition: background .1s; user-select: none; }
+td.wht:hover { background: #ddf0ff; }
+td.gld { background: #ffd700 !important; border-color: #b8860b; }
+td.gld:hover { background: #f0c000 !important; }
+td.sel { background: #74c2f5 !important; border-color: #2e86de !important; }
 .num { position: absolute; top: 1px; left: 2px; font-size: var(--num); line-height: 1;
-       color: #222; pointer-events: none; font-family: Arial; z-index: 2; }
-.ci  { position: absolute; inset: 0; width: 100%; height: 100%; border: none;
-       background: transparent; text-align: center; padding: 0;
-       font-family: Georgia, serif; font-weight: bold; font-size: var(--ltr);
-       color: #111; text-transform: uppercase; caret-color: transparent; outline: none; }
-/* locked (solved) cells: keep the letter green & solid, not browser-greyed */
-.ci:disabled { color: #1a7a1a; -webkit-text-fill-color: #1a7a1a; opacity: 1; cursor: default; }
+       color: #222; pointer-events: none; font-family: Arial; }
+.ltr { display: flex; align-items: center; justify-content: center; height: var(--cell);
+       font-size: var(--ltr); font-family: Georgia, serif; font-weight: bold;
+       color: #111; pointer-events: none; }
 
 /* ── side panel (progress + clue lists) ── */
 #panel { width: 340px; flex-shrink: 0; background: #fff; border-radius: 8px;
@@ -264,13 +274,22 @@ hr.divider { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
   body { padding: 8px; font-size: 16px; }
   #app { flex-direction: column; align-items: center; gap: 14px; }
   #panel { width: 100%; max-width: 560px; }
-  #clue-bar .cb-clue { font-size: 1.05rem; }
+  #clue-label { font-size: 1.1rem; }
   .clue-btn { font-size: 0.95rem; }
 }
 </style>
 </head>
 <body>
-  <div id="clue-bar"></div>
+  <div id="control">
+    <div id="clue-label"></div>
+    <div id="input-row">
+      <input id="answerInput" type="text" placeholder="Type your answer…"
+             autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="characters"
+             onkeydown="if(event.key==='Enter')submitAnswer()">
+      <button id="submitBtn" onclick="submitAnswer()">Submit ↵</button>
+    </div>
+    <div id="feedbackMsg"></div>
+  </div>
   <div id="app">
     <div id="grid-wrap">
       <table class="cw" id="grid"></table>
@@ -294,238 +313,169 @@ hr.divider { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
 <script>
 const D = JSON.parse(document.getElementById('gameData').textContent);
 const themedSet = new Set(D.themedCells || []);
-
-const inputs = {};            // "r,c" -> <input>
-const entries = {};           // "r,c" -> typed letter
-const solved = new Set();     // keys of fully-correct words
-const solvedCells = new Set();// "r,c" of cells in a solved word
-let dir = 'across';           // current orientation preference
+const revealed = new Set();   // keys of solved words
 let selKey = null;            // active word key
-let selCell = null;           // active cell "r,c"
-let preClickSel = null;       // selection captured on pointerdown (for re-tap toggle)
 
-/* ── helpers ── */
 function byKey(k){ return D.placements.find(p => p.key === k); }
-function gridLetter(key){ const a = key.split(','); return D.grid[+a[0]][+a[1]]; }
 function escapeHtml(s){
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function cellsOf(p){
-  const out = [];
+
+/* cells of the active word (for the blue highlight) */
+function selCellSet(key){
+  const p = byKey(key); const s = new Set(); if (!p) return s;
   for (let i = 0; i < p.word.length; i++){
     const r = p.row + (p.direction === 'down'   ? i : 0);
     const c = p.col + (p.direction === 'across' ? i : 0);
-    out.push(r + ',' + c);
+    s.add(r + ',' + c);
   }
-  return out;
+  return s;
 }
-function wordsAt(key){
-  const ks = D.cellToWords[key] || [];
-  return { across: ks.find(k => k.endsWith('-across')) || null,
-           down:   ks.find(k => k.endsWith('-down'))   || null };
+/* letters revealed by every solved word */
+function revealedLetters(){
+  const m = {};
+  for (const p of D.placements){
+    if (!revealed.has(p.key)) continue;
+    for (let i = 0; i < p.word.length; i++){
+      const r = p.row + (p.direction === 'down'   ? i : 0);
+      const c = p.col + (p.direction === 'across' ? i : 0);
+      m[r + ',' + c] = p.word[i];
+    }
+  }
+  return m;
 }
-function orderedKeys(){
-  const a = D.placements.filter(p => p.direction === 'across').sort((x,y)=>x.number-y.number).map(p=>p.key);
-  const d = D.placements.filter(p => p.direction === 'down'  ).sort((x,y)=>x.number-y.number).map(p=>p.key);
-  return a.concat(d);
+/* mark any word whose cells are all filled by crossings as solved (loop to
+   stable, since one auto-solve can complete another) */
+function autoSolveCrossed(){
+  let changed = true;
+  while (changed){
+    changed = false;
+    const rl = revealedLetters();
+    for (const p of D.placements){
+      if (revealed.has(p.key)) continue;
+      let complete = true;
+      for (let i = 0; i < p.word.length; i++){
+        const r = p.row + (p.direction === 'down'   ? i : 0);
+        const c = p.col + (p.direction === 'across' ? i : 0);
+        if (!rl[r + ',' + c]){ complete = false; break; }
+      }
+      if (complete){ revealed.add(p.key); changed = true; }
+    }
+  }
 }
 
-/* ── build the grid once; afterwards we only toggle classes / input values
-      so the focused input (and the mobile keyboard) survives updates ── */
-function buildGrid(){
+/* ── grid render ── */
+function renderGrid(){
+  const sc = selCellSet(selKey);
+  const rl = revealedLetters();
   const rows = [];
   for (let r = 0; r < D.rows; r++){
     let tr = '<tr>';
     for (let c = 0; c < D.cols; c++){
       if (D.grid[r][c] === '#'){ tr += '<td class="blk"></td>'; continue; }
       const key = r + ',' + c;
+      const cls = 'wht' + (themedSet.has(key) ? ' gld' : '') + (sc.has(key) ? ' sel' : '');
       const num = D.cellNumbers[key];
-      tr += '<td class="wht' + (themedSet.has(key) ? ' gld' : '') + '" data-k="' + key + '">'
+      const ltr = rl[key] || '';
+      tr += '<td class="' + cls + '" onclick="cellClick(' + r + ',' + c + ')">'
           + (num ? '<span class="num">' + num + '</span>' : '')
-          + '<input class="ci" data-r="' + r + '" data-c="' + c + '" '
-          + 'inputmode="text" autocapitalize="characters" autocomplete="off" '
-          + 'autocorrect="off" spellcheck="false" enterkeyhint="next" aria-label="cell">'
-          + '</td>';
+          + '<div class="ltr">' + ltr + '</div></td>';
     }
     rows.push(tr + '</tr>');
   }
   document.getElementById('grid').innerHTML = rows.join('');
-
-  document.querySelectorAll('input.ci').forEach(inp => {
-    const r = +inp.dataset.r, c = +inp.dataset.c, key = r + ',' + c;
-    inputs[key] = inp;
-    inp.addEventListener('focus',       () => onFocus(r, c));
-    inp.addEventListener('pointerdown', () => { preClickSel = selCell; });
-    inp.addEventListener('click',       () => onClick(r, c));
-    inp.addEventListener('input',       () => onInput(r, c));
-    inp.addEventListener('keydown',     e  => onKey(r, c, e));
-  });
-
-  // clue-list buttons (event delegation, set after each render)
-  ['across-list','down-list'].forEach(id => {
-    document.getElementById(id).addEventListener('click', e => {
-      const b = e.target.closest('button[data-key]');
-      if (b) selectWord(b.dataset.key);
-    });
-  });
 }
 
-/* ── selection ── */
-function onFocus(r, c){
-  const key = r + ',' + c;
-  inputs[key].select();
-  if (selCell !== key) select(r, c, false);
+/* ── cell click: choose a word, preferring an unsolved one; re-tap toggles ── */
+function cellClick(r, c){
+  const words = D.cellToWords[r + ',' + c] || [];
+  const aKey = words.find(k => k.endsWith('-across')) || '';
+  const dKey = words.find(k => k.endsWith('-down'))   || '';
+  // re-tapping the active word's cell flips to the crossing word
+  if (selKey === aKey && dKey){ selectWord(dKey); return; }
+  if (selKey === dKey && aKey){ selectWord(aKey); return; }
+  // fresh tap: prefer a still-unsolved word so tapping a finished letter
+  // surfaces the crossing mystery clue you're actually after
+  const cands = [aKey, dKey].filter(Boolean);
+  if (!cands.length) return;
+  selectWord(cands.find(k => !revealed.has(k)) || cands[0]);
 }
-function onClick(r, c){
-  // tapping the already-selected cell flips across <-> down
-  if (preClickSel === r + ',' + c) select(r, c, true);
-}
-function select(r, c, toggle){
-  const key = r + ',' + c;
-  const w = wordsAt(key);
-  let nd = dir;
-  if (toggle && w.across && w.down) nd = (dir === 'across' ? 'down' : 'across');
-  if (!w[nd]) nd = w.across ? 'across' : 'down';
-  dir = nd; selKey = w[nd]; selCell = key;
-  paint(); updateClueBar();
-}
-/* pick a whole word (clue-list tap / Tab) and jump to its first empty cell */
+
+/* ── select a word ── */
 function selectWord(key, focus){
-  const p = byKey(key); if (!p) return;
-  dir = p.direction; selKey = key;
-  const cells = cellsOf(p);
-  selCell = cells.find(k => !entries[k]) || cells[0];
-  paint(); updateClueBar();
-  if (focus !== false){ const inp = inputs[selCell]; if (inp){ inp.focus(); inp.select(); } }
+  selKey = key;
+  renderGrid(); renderControl(); renderClueLists();
+  document.getElementById('feedbackMsg').textContent = '';
+  const inp = document.getElementById('answerInput');
+  inp.value = '';
+  // focus the answer box (so the keyboard opens) only for unsolved words, and
+  // not on the initial boot selection
+  if (focus !== false && !revealed.has(key)) inp.focus();
 }
 
-/* ── typing ── */
-function onInput(r, c){
-  const key = r + ',' + c, inp = inputs[key];
-  const v = inp.value.toUpperCase().replace(/[^A-Z]/g, '');
-  if (!v){ entries[key] = ''; inp.value = ''; recompute(); updateClueBar(); return; }
-  const ch = v[v.length - 1];          // keep last char (handles overtype)
-  entries[key] = ch; inp.value = ch;
-  recompute(); advance(r, c); updateClueBar();
-}
-function advance(r, c){
+/* ── clue + input bar ── */
+function renderControl(){
   const p = byKey(selKey); if (!p) return;
-  const cells = cellsOf(p);
-  const i = cells.indexOf(r + ',' + c);
-  // hop to the next still-editable cell (skip letters locked by a solved word)
-  for (let j = i + 1; j < cells.length; j++){
-    if (!solvedCells.has(cells[j])){ focusKey(cells[j]); return; }
-  }
-  paint();   // no editable cell ahead: stay put
-}
-function focusKey(k){
-  const inp = inputs[k]; if (!inp) return;
-  selCell = k; paint();
-  inp.focus(); inp.select();
-}
-function onKey(r, c, e){
-  const key = r + ',' + c;
-  if (e.key === 'Backspace'){
-    if (!entries[key]){          // empty cell: step back and clear previous
-      e.preventDefault();
-      const p = byKey(selKey); if (!p) return;
-      const cells = cellsOf(p); const i = cells.indexOf(key);
-      for (let j = i - 1; j >= 0; j--){   // skip locked letters when stepping back
-        const pk = cells[j];
-        if (solvedCells.has(pk)) continue;
-        entries[pk] = ''; if (inputs[pk]) inputs[pk].value = '';
-        recompute(); focusKey(pk); updateClueBar();
-        break;
-      }
-    }
-    return;                      // non-empty: the input event clears it
-  }
-  if (e.key.indexOf('Arrow') === 0){ e.preventDefault(); arrow(r, c, e.key); return; }
-  if (e.key === 'Enter' || e.key === 'Tab'){ e.preventDefault(); step(e.shiftKey); return; }
-  if (e.key === ' '){ e.preventDefault(); select(r, c, true); }
-}
-function arrow(r, c, k){
-  let dr = 0, dc = 0, wd = dir;
-  if (k === 'ArrowRight'){ dc =  1; wd = 'across'; }
-  if (k === 'ArrowLeft' ){ dc = -1; wd = 'across'; }
-  if (k === 'ArrowDown' ){ dr =  1; wd = 'down';   }
-  if (k === 'ArrowUp'   ){ dr = -1; wd = 'down';   }
-  let nr = r + dr, nc = c + dc;
-  while (nr >= 0 && nr < D.rows && nc >= 0 && nc < D.cols){
-    if (D.grid[nr][nc] !== '#'){ dir = wd; select(nr, nc, false); inputs[nr + ',' + nc].focus(); return; }
-    nr += dr; nc += dc;
-  }
-}
-function step(back){
-  const order = orderedKeys();
-  let i = order.indexOf(selKey);
-  i = (i + (back ? -1 : 1) + order.length) % order.length;
-  selectWord(order[i]);
+  const dir = p.direction === 'across' ? 'ACROSS' : 'DOWN';
+  document.getElementById('clue-label').innerHTML =
+    '<span class="ql-num">' + p.number + ' ' + dir + ':</span> ' + escapeHtml(p.clue)
+    + ' <span class="ql-hint">(' + p.word.length + ' letters)</span>';
+  const done = revealed.has(selKey);
+  document.getElementById('answerInput').disabled = done;
+  document.getElementById('submitBtn').disabled   = done;
 }
 
-/* ── correctness / rendering ── */
-function recompute(){
-  solved.clear(); solvedCells.clear();
-  for (const p of D.placements){
-    const cells = cellsOf(p);
-    let ok = true;
-    for (const k of cells){ if ((entries[k] || '') !== gridLetter(k)){ ok = false; break; } }
-    if (ok){ solved.add(p.key); cells.forEach(k => solvedCells.add(k)); }
-  }
-  paint(); updateProgress(); renderClueLists();
-  document.getElementById('completion').style.display =
-    (solved.size === D.placements.length) ? 'block' : 'none';
-}
-function paint(){
-  const wc = selKey ? new Set(cellsOf(byKey(selKey))) : new Set();
-  for (const key in inputs){
-    const inp = inputs[key];
-    const locked = solvedCells.has(key);   // cell belongs to a fully-correct word
-    // Lock correct cells: a disabled input can't be focused, highlighted or
-    // edited, so solved letters stay put and tapping them does nothing.
-    inp.disabled = locked;
-    const td = inp.parentElement;
-    td.className = 'wht'
-      + (themedSet.has(key)    ? ' gld'  : '')
-      + (wc.has(key)           ? ' word' : '')
-      + (key === selCell && !locked ? ' cur' : '')
-      + (locked                ? ' ok'   : '');
+/* ── answer checking ── */
+function submitAnswer(){
+  const p = byKey(selKey); if (!p || revealed.has(p.key)) return;
+  const guess = document.getElementById('answerInput').value.toUpperCase().trim().replace(/\\s+/g, '');
+  const msg = document.getElementById('feedbackMsg');
+  if (guess === p.word){
+    revealed.add(selKey); autoSolveCrossed();
+    msg.textContent = '\\u2713 Correct!'; msg.style.color = '#2a8c2a';
+    renderGrid(); renderControl(); renderClueLists(); updateProgress();
+    if (D.placements.every(x => revealed.has(x.key))){
+      document.getElementById('completion').style.display = 'block';
+      document.getElementById('answerInput').disabled = true;
+      document.getElementById('submitBtn').disabled   = true;
+    }
+  } else {
+    msg.textContent = '\\u2717 Not quite \\u2014 try again!'; msg.style.color = '#c0392b';
   }
 }
-function updateClueBar(){
-  const bar = document.getElementById('clue-bar');
-  const p = byKey(selKey);
-  if (!p){ bar.innerHTML = ''; return; }
-  const lbl = p.direction === 'across' ? 'ACROSS' : 'DOWN';
-  let stat = '';
-  if (solved.has(p.key)) stat = '<span class="cb-stat ok">\\u2713</span>';
-  else if (cellsOf(p).every(k => entries[k])) stat = '<span class="cb-stat bad">\\u2717</span>';
-  bar.innerHTML = '<span class="cb-num">' + p.number + ' ' + lbl + '</span>'
-    + '<span class="cb-clue">' + escapeHtml(p.clue)
-    + ' <span class="cb-len">(' + p.word.length + ')</span></span>' + stat;
-}
-function updateProgress(){
-  const total = D.placements.length, done = solved.size;
-  document.getElementById('prog-text').textContent = done + ' / ' + total + ' words solved';
-  document.getElementById('prog-inner').style.width = Math.round(done / total * 100) + '%';
-}
+
+/* ── clue lists ── */
 function renderClueLists(){
   ['across','down'].forEach(d => {
     const items = D.placements.filter(p => p.direction === d).sort((a,b)=>a.number-b.number);
     document.getElementById(d + '-list').innerHTML = items.map(p => {
-      const cls = 'clue-btn' + (solved.has(p.key) ? ' solved' : '') + (p.key === selKey ? ' active' : '');
-      const pre = solved.has(p.key) ? '\\u2713 ' : '';
+      const cls = 'clue-btn' + (revealed.has(p.key) ? ' solved' : '') + (p.key === selKey ? ' active' : '');
+      const pre = revealed.has(p.key) ? '\\u2713 ' : '';
       return '<button type="button" class="' + cls + '" data-key="' + p.key + '">'
            + pre + p.number + '. ' + escapeHtml(p.clue) + '</button>';
     }).join('');
   });
 }
 
-/* ── boot: highlight the first word but DON'T focus it, so the phone
-      keyboard only opens once the player taps a cell ── */
-buildGrid();
-recompute();
-if (D.placements.length) selectWord(orderedKeys()[0], false);
+/* ── progress ── */
+function updateProgress(){
+  const total = D.placements.length, done = revealed.size;
+  document.getElementById('prog-text').textContent = done + ' / ' + total + ' words solved';
+  document.getElementById('prog-inner').style.width = Math.round(done / total * 100) + '%';
+}
+
+/* clue-list taps (event delegation survives innerHTML re-renders) */
+['across-list','down-list'].forEach(id => {
+  document.getElementById(id).addEventListener('click', e => {
+    const b = e.target.closest('button[data-key]');
+    if (b) selectWord(b.dataset.key);
+  });
+});
+
+/* boot — highlight the first word but DON'T focus the input, so the phone
+   keyboard only opens once the player taps a cell or a clue */
+if (D.placements.length) selectWord(D.placements[0].key, false);
+updateProgress();
 </script>
 </body>
 </html>"""
