@@ -1,0 +1,590 @@
+{
+  "grid": [
+    [
+      "E",
+      "U",
+      "C",
+      "L",
+      "I",
+      "D",
+      "#",
+      "#",
+      "I",
+      "R",
+      "A",
+      "#"
+    ],
+    [
+      "F",
+      "#",
+      "E",
+      "#",
+      "N",
+      "O",
+      "#",
+      "O",
+      "M",
+      "I",
+      "T",
+      "S"
+    ],
+    [
+      "F",
+      "I",
+      "A",
+      "S",
+      "C",
+      "O",
+      "#",
+      "T",
+      "O",
+      "P",
+      "H",
+      "I"
+    ],
+    [
+      "E",
+      "L",
+      "S",
+      "#",
+      "#",
+      "D",
+      "I",
+      "T",
+      "#",
+      "P",
+      "E",
+      "T"
+    ],
+    [
+      "D",
+      "L",
+      "E",
+      "#",
+      "P",
+      "A",
+      "S",
+      "A",
+      "D",
+      "E",
+      "N",
+      "A"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "W",
+      "I",
+      "D",
+      "O",
+      "W",
+      "E",
+      "R",
+      "S",
+      "#"
+    ],
+    [
+      "#",
+      "#",
+      "E",
+      "E",
+      "C",
+      "#",
+      "L",
+      "A",
+      "C",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "G",
+      "O",
+      "D",
+      "D",
+      "A",
+      "R",
+      "D",
+      "#",
+      "O",
+      "K",
+      "A",
+      "#"
+    ],
+    [
+      "U",
+      "K",
+      "E",
+      "#",
+      "S",
+      "E",
+      "E",
+      "#",
+      "#",
+      "E",
+      "#",
+      "V"
+    ],
+    [
+      "I",
+      "R",
+      "R",
+      "E",
+      "S",
+      "I",
+      "S",
+      "T",
+      "I",
+      "B",
+      "L",
+      "E"
+    ],
+    [
+      "#",
+      "A",
+      "L",
+      "T",
+      "O",
+      "S",
+      "#",
+      "A",
+      "M",
+      "A",
+      "I",
+      "N"
+    ],
+    [
+      "#",
+      "S",
+      "E",
+      "A",
+      "S",
+      "#",
+      "#",
+      "R",
+      "U",
+      "B",
+      "I",
+      "N"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "EUCLID",
+      "clue": "ESA dark-energy telescope, a Roman cousin",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "EFFED",
+      "clue": "Bleeped out, as a four-letter word",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "CEASE",
+      "clue": "Come to a stop",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "INC",
+      "clue": "Suffix on a company name",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "DOODAD",
+      "clue": "Thingamajig",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "IRA",
+      "clue": "Retirement savings account, for short",
+      "row": 0,
+      "col": 8,
+      "direction": "across",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "IMO",
+      "clue": "\"In my opinion,\" in texts",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "RIPPER",
+      "clue": "19th-century killer 'Jack the ___'",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "ATHENS",
+      "clue": "Greek capital named for a goddess",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "OMITS",
+      "clue": "Leaves out",
+      "row": 1,
+      "col": 7,
+      "direction": "across",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "OTTAWA",
+      "clue": "Capital of Canada",
+      "row": 1,
+      "col": 7,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "SITA",
+      "clue": "Rama's wife in the Ramayana",
+      "row": 1,
+      "col": 11,
+      "direction": "down",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "FIASCO",
+      "clue": "A ridiculous failure",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "ILL",
+      "clue": "Under the weather",
+      "row": 2,
+      "col": 1,
+      "direction": "down",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "TOPHI",
+      "clue": "Gouty deposits of urate crystals",
+      "row": 2,
+      "col": 7,
+      "direction": "across",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "ELS",
+      "clue": "Chicago trains, informally",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "DIT",
+      "clue": "Morse code \"dot\"",
+      "row": 3,
+      "col": 5,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "ISOLDES",
+      "clue": "Legendary loves of Tristan",
+      "row": 3,
+      "col": 6,
+      "direction": "down",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "PET",
+      "clue": "Dog or cat, e.g.",
+      "row": 3,
+      "col": 9,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "DLE",
+      "clue": "Data Link Escape, in ASCII (abbr.)",
+      "row": 4,
+      "col": 0,
+      "direction": "across",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "PASADENA",
+      "clue": "Home city of the SSC (IPAC)",
+      "row": 4,
+      "col": 4,
+      "direction": "across",
+      "number": 19,
+      "is_themed": true
+    },
+    {
+      "word": "PICASSOS",
+      "clue": "Cubist works by a Spanish master",
+      "row": 4,
+      "col": 4,
+      "direction": "down",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "DECO",
+      "clue": "Art ___ (1920s design style)",
+      "row": 4,
+      "col": 8,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "WIDOWERS",
+      "clue": "People who have outlived their spouses",
+      "row": 5,
+      "col": 3,
+      "direction": "across",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "WED",
+      "clue": "Hump day, for short",
+      "row": 5,
+      "col": 3,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "EEC",
+      "clue": "Forerunner of the EU, for short",
+      "row": 6,
+      "col": 2,
+      "direction": "across",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "EDERLE",
+      "clue": "Gertrude ___, 1926 Channel swimmer",
+      "row": 6,
+      "col": 2,
+      "direction": "down",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "LAC",
+      "clue": "Resin used to make shellac",
+      "row": 6,
+      "col": 6,
+      "direction": "across",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "GODDARD",
+      "clue": "NASA center managing the Roman mission",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 24,
+      "is_themed": true
+    },
+    {
+      "word": "GUI",
+      "clue": "Point-and-click interface, for short",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "OKRAS",
+      "clue": "Gumbo pods",
+      "row": 7,
+      "col": 1,
+      "direction": "down",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "REIS",
+      "clue": "Multiple Recreational Equipment, Inc. stores",
+      "row": 7,
+      "col": 5,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "OKA",
+      "clue": "Old Turkish unit of weight",
+      "row": 7,
+      "col": 8,
+      "direction": "across",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "KEBAB",
+      "clue": "Skewered grilled meat",
+      "row": 7,
+      "col": 9,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "UKE",
+      "clue": "A small guitar having four strings",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "SEE",
+      "clue": "Bishop's seat",
+      "row": 8,
+      "col": 4,
+      "direction": "across",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "VENN",
+      "clue": "___ diagram of overlapping circles",
+      "row": 8,
+      "col": 11,
+      "direction": "down",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "IRRESISTIBLE",
+      "clue": "Impossible to resist; overpowering",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "ETA",
+      "clue": "Estimated time of arrival, briefly",
+      "row": 9,
+      "col": 3,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "TAR",
+      "clue": "Road-paving goo",
+      "row": 9,
+      "col": 7,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "IMU",
+      "clue": "Hawaiian underground cooking oven",
+      "row": 9,
+      "col": 8,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "LII",
+      "clue": "52, to Caesar",
+      "row": 9,
+      "col": 10,
+      "direction": "down",
+      "number": 36,
+      "is_themed": false
+    },
+    {
+      "word": "ALTOS",
+      "clue": "Choir voices below sopranos",
+      "row": 10,
+      "col": 1,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "AMAIN",
+      "clue": "At full speed; with great haste",
+      "row": 10,
+      "col": 7,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "SEAS",
+      "clue": "The Adriatic and Aegean, e.g.",
+      "row": 11,
+      "col": 1,
+      "direction": "across",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "RUBIN",
+      "clue": "Vera C. ___ Observatory, Roman's survey partner",
+      "row": 11,
+      "col": 7,
+      "direction": "across",
+      "number": 40,
+      "is_themed": true
+    }
+  ]
+}

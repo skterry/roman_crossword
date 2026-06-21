@@ -108,6 +108,32 @@ def _latest_solution_png() -> str | None:
     return pngs[-1] if pngs else None
 
 
+def _solution_clues(png_path: str) -> tuple[list[tuple[int, str, str]],
+                                            list[tuple[int, str, str]]] | None:
+    """Across/Down clue lists for a solution PNG's matching puzzle JSON.
+
+    Each solution_<date>.png sits beside a puzzle_<date>.json holding that
+    week's placements. Returns (across, down) where each entry is
+    (number, ANSWER, clue), sorted by clue number, or None if the JSON is
+    missing/unreadable.
+    """
+    json_path = png_path.replace("solution_", "puzzle_").rsplit(".", 1)[0] + ".json"
+    if not os.path.exists(json_path):
+        return None
+    try:
+        with open(json_path, encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+    across, down = [], []
+    for p in data.get("placements", []):
+        entry = (p["number"], p["word"], p.get("clue") or "")
+        (across if p["direction"] == "across" else down).append(entry)
+    across.sort(key=lambda e: e[0])
+    down.sort(key=lambda e: e[0])
+    return across, down
+
+
 # ---------------------------------------------------------------------------
 # Session-state bootstrap
 # ---------------------------------------------------------------------------
@@ -520,6 +546,30 @@ if st.session_state.show_solution:
         img_col, _spacer = st.columns([3, 2])
         with img_col:
             st.image(_sol_png, caption="Last week's completed solution", width="stretch")
+
+        # Clue list for the same board, so players can see which clue each
+        # solved word answered (a grid full of words alone isn't much help).
+        _clues = _solution_clues(_sol_png)
+        if _clues:
+            across, down = _clues
+
+            def _fmt(entries: list[tuple[int, str, str]]) -> str:
+                # Two trailing spaces force a Markdown hard line break so each
+                # clue sits on its own line within the column.
+                return "  \n".join(
+                    f"**{n}.** {clue} &nbsp;→&nbsp; **{word}**"
+                    for n, word, clue in entries
+                )
+
+            with st.expander("Last week's clues & answers", expanded=True):
+                ac_col, dn_col = st.columns(2)
+                with ac_col:
+                    st.markdown("**ACROSS**")
+                    st.markdown(_fmt(across), unsafe_allow_html=True)
+                with dn_col:
+                    st.markdown("**DOWN**")
+                    st.markdown(_fmt(down), unsafe_allow_html=True)
+
         st.caption("Click **View last week's solution** again to hide.")
     else:
         st.info("No past solution is available yet.")

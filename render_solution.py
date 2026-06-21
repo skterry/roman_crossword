@@ -14,6 +14,7 @@ Defaults to reading puzzle.json and writing solution.png beside it.
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 import matplotlib
@@ -50,6 +51,17 @@ def _cell_numbers(data: dict) -> dict:
     for p in data["placements"]:
         nums.setdefault((p["row"], p["col"]), p["number"])
     return nums
+
+
+def _title_from_path(path: str) -> str | None:
+    """Derive a date title from a dated filename, e.g.
+    'past_boards/puzzle_2026-06-14.json' -> '2026-06-14 Solution'.
+
+    Returns None if the path carries no YYYY-MM-DD stamp (e.g. the live
+    puzzle.json), in which case the board is rendered untitled.
+    """
+    m = re.search(r"\d{4}-\d{2}-\d{2}", path)
+    return f"{m.group(0)} Solution" if m else None
 
 
 def render(data: dict, output_path: str, title: str | None = None,
@@ -111,7 +123,9 @@ def main() -> None:
                     help="Path to puzzle JSON (default: puzzle.json)")
     ap.add_argument("-o", "--output", default=None,
                     help="Output PNG path (default: solution.png beside input)")
-    ap.add_argument("--title", default=None, help="Optional title text")
+    ap.add_argument("--title", default=None,
+                    help="Title text (default: '<YYYY-MM-DD> Solution' parsed "
+                         "from a dated filename, else untitled)")
     ap.add_argument("--dpi", type=int, default=300,
                     help="Output resolution in pixels per inch (default: 300)")
     args = ap.parse_args()
@@ -120,7 +134,9 @@ def main() -> None:
     with open(src, encoding="utf-8") as f:
         data = json.load(f)
     out = args.output or str(src.with_name("solution.png"))
-    render(data, out, title=args.title, dpi=args.dpi)
+    # Default the title to the date stamped on the input (or output) filename.
+    title = args.title or _title_from_path(str(src)) or _title_from_path(out)
+    render(data, out, title=title, dpi=args.dpi)
     print(f"Wrote {out}")
 
 
