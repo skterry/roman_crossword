@@ -1,0 +1,617 @@
+{
+  "grid": [
+    [
+      "L",
+      "A",
+      "M",
+      "B",
+      "D",
+      "A",
+      "#",
+      "P",
+      "O",
+      "A",
+      "S",
+      "#"
+    ],
+    [
+      "I",
+      "C",
+      "E",
+      "M",
+      "A",
+      "N",
+      "#",
+      "A",
+      "N",
+      "N",
+      "A",
+      "M"
+    ],
+    [
+      "D",
+      "E",
+      "M",
+      "I",
+      "S",
+      "T",
+      "#",
+      "R",
+      "E",
+      "T",
+      "R",
+      "O"
+    ],
+    [
+      "O",
+      "D",
+      "O",
+      "#",
+      "H",
+      "I",
+      "D",
+      "#",
+      "#",
+      "E",
+      "A",
+      "S"
+    ],
+    [
+      "S",
+      "I",
+      "R",
+      "#",
+      "#",
+      "C",
+      "A",
+      "D",
+      "E",
+      "N",
+      "C",
+      "E"
+    ],
+    [
+      "#",
+      "A",
+      "I",
+      "D",
+      "#",
+      "#",
+      "D",
+      "I",
+      "S",
+      "N",
+      "E",
+      "Y"
+    ],
+    [
+      "#",
+      "#",
+      "A",
+      "U",
+      "M",
+      "#",
+      "#",
+      "M",
+      "O",
+      "A",
+      "N",
+      "S"
+    ],
+    [
+      "B",
+      "U",
+      "L",
+      "G",
+      "E",
+      "#",
+      "F",
+      "A",
+      "X",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "A",
+      "L",
+      "I",
+      "#",
+      "T",
+      "R",
+      "I",
+      "G",
+      "#",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "G",
+      "A",
+      "Z",
+      "E",
+      "#",
+      "A",
+      "L",
+      "G",
+      "I",
+      "E",
+      "R",
+      "S"
+    ],
+    [
+      "S",
+      "M",
+      "E",
+      "W",
+      "#",
+      "S",
+      "U",
+      "I",
+      "T",
+      "#",
+      "O",
+      "I"
+    ],
+    [
+      "#",
+      "A",
+      "D",
+      "E",
+      "#",
+      "#",
+      "M",
+      "O",
+      "S",
+      "A",
+      "I",
+      "C"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "LAMBDA",
+      "clue": "Greek letter denoting the cosmological constant in Einstein's equations",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "LIDOS",
+      "clue": "Open-air baths or swimming pools",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "ACEDIA",
+      "clue": "Spiritual apathy",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "MEMORIALIZED",
+      "clue": "Address(ed) in a memorial",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "BMI",
+      "clue": "Weight-to-height health stat (abbr.)",
+      "row": 0,
+      "col": 3,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "DASH",
+      "clue": "Morse code symbol",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "ANTIC",
+      "clue": "Playful prank",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "POAS",
+      "clue": "Meadow grasses",
+      "row": 0,
+      "col": 7,
+      "direction": "across",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "PAR",
+      "clue": "Golf standard",
+      "row": 0,
+      "col": 7,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "ONE",
+      "clue": "Lowest counting number",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "ANTENNA",
+      "clue": "Radio signal receiver",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "SARACEN",
+      "clue": "Medieval Muslim, to Crusaders",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "ICEMAN",
+      "clue": "Someone who cuts and delivers ice",
+      "row": 1,
+      "col": 0,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "ANNAM",
+      "clue": "Historic region of Vietnam",
+      "row": 1,
+      "col": 7,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "MOSEYS",
+      "clue": "Walk(s) leisurely",
+      "row": 1,
+      "col": 11,
+      "direction": "down",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "DEMIST",
+      "clue": "Free from mist",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "RETRO",
+      "clue": "A fashion reminiscent of the past",
+      "row": 2,
+      "col": 7,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "ODO",
+      "clue": "Shape-shifter in Star Trek",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "HID",
+      "clue": "Prevent from being seen or discovered",
+      "row": 3,
+      "col": 4,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "DAD",
+      "clue": "Pop",
+      "row": 3,
+      "col": 6,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "EAS",
+      "clue": "Emergency Alert System (abbr.)",
+      "row": 3,
+      "col": 9,
+      "direction": "across",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "SIR",
+      "clue": "Term of address for a man",
+      "row": 4,
+      "col": 0,
+      "direction": "across",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "CADENCE",
+      "clue": "Frequency with which Roman revisits a field",
+      "row": 4,
+      "col": 5,
+      "direction": "across",
+      "number": 21,
+      "is_themed": true
+    },
+    {
+      "word": "DIMAGGIO",
+      "clue": "Yankee great Joe",
+      "row": 4,
+      "col": 7,
+      "direction": "down",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "ESOX",
+      "clue": "Pike's (the fish) genus",
+      "row": 4,
+      "col": 8,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "AID",
+      "clue": "A resource",
+      "row": 5,
+      "col": 1,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "DUG",
+      "clue": "Past tense of dig",
+      "row": 5,
+      "col": 3,
+      "direction": "down",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "DISNEY",
+      "clue": "Mickey Mouse's creator",
+      "row": 5,
+      "col": 6,
+      "direction": "across",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "AUM",
+      "clue": "Meditation syllable",
+      "row": 6,
+      "col": 2,
+      "direction": "across",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "MET",
+      "clue": "Come together",
+      "row": 6,
+      "col": 4,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "MOANS",
+      "clue": "Utterances expressing pain or disapproval",
+      "row": 6,
+      "col": 7,
+      "direction": "across",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "BULGE",
+      "clue": "Dense central region of the Milky Way targeted by one of Roman's time-domain surveys",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 30,
+      "is_themed": true
+    },
+    {
+      "word": "BAGS",
+      "clue": "Grocery holders",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "ULAMA",
+      "clue": "Body of Muslim scholars",
+      "row": 7,
+      "col": 1,
+      "direction": "down",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "FAX",
+      "clue": "Send via phone line, old-style",
+      "row": 7,
+      "col": 6,
+      "direction": "across",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "FILUM",
+      "clue": "Threadlike anatomical part",
+      "row": 7,
+      "col": 6,
+      "direction": "down",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "ALI",
+      "clue": "Boxer Muhammad ___",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "TRIG",
+      "clue": "The mathematics of triangles and ____ functions",
+      "row": 8,
+      "col": 4,
+      "direction": "across",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "RAS",
+      "clue": "Royal Astronomical Society",
+      "row": 8,
+      "col": 5,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "GAZE",
+      "clue": "A long fixed look",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 36,
+      "is_themed": false
+    },
+    {
+      "word": "EWE",
+      "clue": "Female sheep",
+      "row": 9,
+      "col": 3,
+      "direction": "down",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "ALGIERS",
+      "clue": "Capital of Algeria",
+      "row": 9,
+      "col": 5,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "ITS",
+      "clue": "Belonging to it",
+      "row": 9,
+      "col": 8,
+      "direction": "down",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "ROI",
+      "clue": "Return on investment, for short",
+      "row": 9,
+      "col": 10,
+      "direction": "down",
+      "number": 40,
+      "is_themed": false
+    },
+    {
+      "word": "SIC",
+      "clue": "Urge to attack someone",
+      "row": 9,
+      "col": 11,
+      "direction": "down",
+      "number": 41,
+      "is_themed": false
+    },
+    {
+      "word": "SMEW",
+      "clue": "Small diving duck",
+      "row": 10,
+      "col": 0,
+      "direction": "across",
+      "number": 42,
+      "is_themed": false
+    },
+    {
+      "word": "SUIT",
+      "clue": "Jacket-and-trousers set",
+      "row": 10,
+      "col": 5,
+      "direction": "across",
+      "number": 43,
+      "is_themed": false
+    },
+    {
+      "word": "ADE",
+      "clue": "A sweetened beverage of diluted fruit juice",
+      "row": 11,
+      "col": 1,
+      "direction": "across",
+      "number": 45,
+      "is_themed": false
+    },
+    {
+      "word": "MOSAIC",
+      "clue": "Product formed from many overlapping Roman pointings",
+      "row": 11,
+      "col": 6,
+      "direction": "across",
+      "number": 46,
+      "is_themed": true
+    }
+  ]
+}
