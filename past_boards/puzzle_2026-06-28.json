@@ -1,0 +1,581 @@
+{
+  "grid": [
+    [
+      "C",
+      "E",
+      "P",
+      "H",
+      "E",
+      "I",
+      "D",
+      "#",
+      "S",
+      "P",
+      "A",
+      "#"
+    ],
+    [
+      "#",
+      "A",
+      "R",
+      "#",
+      "M",
+      "A",
+      "O",
+      "#",
+      "O",
+      "R",
+      "C",
+      "A"
+    ],
+    [
+      "P",
+      "R",
+      "E",
+      "M",
+      "I",
+      "E",
+      "R",
+      "#",
+      "L",
+      "O",
+      "C",
+      "H"
+    ],
+    [
+      "#",
+      "#",
+      "M",
+      "A",
+      "L",
+      "A",
+      "Y",
+      "S",
+      "#",
+      "F",
+      "O",
+      "E"
+    ],
+    [
+      "#",
+      "S",
+      "I",
+      "N",
+      "E",
+      "#",
+      "#",
+      "P",
+      "R",
+      "I",
+      "S",
+      "M"
+    ],
+    [
+      "U",
+      "K",
+      "E",
+      "S",
+      "#",
+      "#",
+      "B",
+      "R",
+      "I",
+      "T",
+      "T",
+      "#"
+    ],
+    [
+      "S",
+      "I",
+      "R",
+      "#",
+      "#",
+      "C",
+      "R",
+      "E",
+      "P",
+      "E",
+      "#",
+      "#"
+    ],
+    [
+      "N",
+      "A",
+      "S",
+      "A",
+      "#",
+      "F",
+      "A",
+      "E",
+      "#",
+      "R",
+      "#",
+      "F"
+    ],
+    [
+      "#",
+      "G",
+      "H",
+      "A",
+      "T",
+      "S",
+      "#",
+      "#",
+      "P",
+      "O",
+      "L",
+      "O"
+    ],
+    [
+      "A",
+      "R",
+      "I",
+      "S",
+      "E",
+      "#",
+      "F",
+      "#",
+      "A",
+      "L",
+      "#",
+      "Y"
+    ],
+    [
+      "L",
+      "A",
+      "P",
+      "S",
+      "E",
+      "#",
+      "A",
+      "M",
+      "P",
+      "E",
+      "R",
+      "E"
+    ],
+    [
+      "E",
+      "M",
+      "S",
+      "#",
+      "#",
+      "#",
+      "Q",
+      "U",
+      "A",
+      "S",
+      "A",
+      "R"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "CEPHEID",
+      "clue": "Pulsating variable star used as a rung on the cosmic distance ladder",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "EAR",
+      "clue": "Organ for hearing",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "PREMIERSHIPS",
+      "clue": "Top government offices",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "EMILE",
+      "clue": "Rousseau's book on education",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "IAEA",
+      "clue": "U.N. atomic energy agency (abbr.)",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "DORY",
+      "clue": "Small flat-bottomed boat",
+      "row": 0,
+      "col": 6,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "SPA",
+      "clue": "Resort with hot springs",
+      "row": 0,
+      "col": 8,
+      "direction": "across",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "SOL",
+      "clue": "Note after 'fa'",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "PROFITEROLES",
+      "clue": "Cream-filled pastries",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "ACCOST",
+      "clue": "Approach and speak to",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "MAO",
+      "clue": "Former Chinese leader",
+      "row": 1,
+      "col": 4,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "ORCA",
+      "clue": "Killer whale",
+      "row": 1,
+      "col": 8,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "AHEM",
+      "clue": "Throat-clearing sound",
+      "row": 1,
+      "col": 11,
+      "direction": "down",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "PREMIER",
+      "clue": "Head of government",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "MANS",
+      "clue": "Staffs, as a post",
+      "row": 2,
+      "col": 3,
+      "direction": "down",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "LOCH",
+      "clue": "Scottish lake",
+      "row": 2,
+      "col": 8,
+      "direction": "across",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "MALAYS",
+      "clue": "People of the ___ Peninsula",
+      "row": 3,
+      "col": 2,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "SPREE",
+      "clue": "Carefree binge",
+      "row": 3,
+      "col": 7,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "FOE",
+      "clue": "Enemy",
+      "row": 3,
+      "col": 9,
+      "direction": "across",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "SINE",
+      "clue": "Trig ratio",
+      "row": 4,
+      "col": 1,
+      "direction": "across",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "SKIAGRAM",
+      "clue": "X-ray image (old term)",
+      "row": 4,
+      "col": 1,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "PRISM",
+      "clue": "Optical element providing Roman's low-resolution slitless spectroscopy mode",
+      "row": 4,
+      "col": 7,
+      "direction": "across",
+      "number": 21,
+      "is_themed": true
+    },
+    {
+      "word": "RIP",
+      "clue": "Tear apart",
+      "row": 4,
+      "col": 8,
+      "direction": "down",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "UKES",
+      "clue": "Small four-stringed guitars",
+      "row": 5,
+      "col": 0,
+      "direction": "across",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "USN",
+      "clue": "U.S. Navy (abbr.)",
+      "row": 5,
+      "col": 0,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "BRITT",
+      "clue": "Young herring",
+      "row": 5,
+      "col": 6,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "BRA",
+      "clue": "Undergarment",
+      "row": 5,
+      "col": 6,
+      "direction": "down",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "SIR",
+      "clue": "Polite address for a man",
+      "row": 6,
+      "col": 0,
+      "direction": "across",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "CREPE",
+      "clue": "Thin French pancake",
+      "row": 6,
+      "col": 5,
+      "direction": "across",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "CFS",
+      "clue": "Cubic feet per second (abbr.)",
+      "row": 6,
+      "col": 5,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "NASA",
+      "clue": "Agency operating the Roman mission",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 27,
+      "is_themed": true
+    },
+    {
+      "word": "AASS",
+      "clue": "Applied-science degrees (abbr.)",
+      "row": 7,
+      "col": 3,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "FAE",
+      "clue": "'From,' in Scots dialect",
+      "row": 7,
+      "col": 5,
+      "direction": "across",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "FOYER",
+      "clue": "Entrance hall",
+      "row": 7,
+      "col": 11,
+      "direction": "down",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "GHATS",
+      "clue": "Indian riverside steps",
+      "row": 8,
+      "col": 1,
+      "direction": "across",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "TEE",
+      "clue": "Golf ball holder",
+      "row": 8,
+      "col": 4,
+      "direction": "down",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "POLO",
+      "clue": "Explorer Marco ___",
+      "row": 8,
+      "col": 8,
+      "direction": "across",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "PAPA",
+      "clue": "Dad",
+      "row": 8,
+      "col": 8,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "ARISE",
+      "clue": "Get up",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "ALE",
+      "clue": "Pub brew",
+      "row": 9,
+      "col": 0,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "FAQ",
+      "clue": "Frequently asked questions (abbr.)",
+      "row": 9,
+      "col": 6,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "LAPSE",
+      "clue": "Slip-up",
+      "row": 10,
+      "col": 0,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "AMPERE",
+      "clue": "Unit of electric current",
+      "row": 10,
+      "col": 6,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "EMS",
+      "clue": "Ambulance crew (Abbr.)",
+      "row": 11,
+      "col": 0,
+      "direction": "across",
+      "number": 41,
+      "is_themed": false
+    },
+    {
+      "word": "QUASAR",
+      "clue": "Distant, luminous active galactic nucleus; Roman will discover many",
+      "row": 11,
+      "col": 6,
+      "direction": "across",
+      "number": 42,
+      "is_themed": true
+    }
+  ]
+}

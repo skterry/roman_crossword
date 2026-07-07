@@ -23,6 +23,11 @@ build/
 *.tsv
 *.dict
 
+# Proper-name bank: raw census data + generated clue map (regenerate locally
+# with build_names_dict.py; names_caps.dict already covered by *.dict above)
+names_data/
+names_clues.json
+
 # Generated puzzle artifacts — only the chosen puzzle.json is committed
 puzzle[0-9]*.json
 puzzle.json.bak

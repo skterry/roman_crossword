@@ -77,11 +77,21 @@ except Exception as _e:           # nltk / corpus not installed
     _WORDNET_ERR = _e
 
 
+# Generic clues for proper-name filler (populated from names_clues.json when
+# --include-names is used).  Proper names have no WordNet gloss, so they get a
+# category clue ("Common surname" / "Common boy's name" / "Common girl's name").
+_NAME_CLUES: Dict[str, str] = {}
+
+
 def apply_clues(cw: CrosswordData) -> None:
-    """Give every filler word a WordNet-gloss clue (themed words keep theirs)."""
+    """Give every filler word a clue (themed words keep theirs).
+
+    Proper names use their generic category clue; all other filler uses its
+    WordNet gloss.
+    """
     for p in cw.placements:
         if not p.is_themed:
-            p.clue = clue_for(p.word) or FILLER_CLUE
+            p.clue = _NAME_CLUES.get(p.word) or clue_for(p.word) or FILLER_CLUE
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +227,12 @@ def run_trial(
         )
         if cw is None:
             continue
+        # Enforce the per-board proper-name cap by rejecting over-full boards;
+        # the retry loop simply tries another layout (no effect when names off).
+        if _NAME_CLUES and sum(
+            1 for p in cw.placements if p.word in _NAME_CLUES
+        ) > args.max_names:
+            continue
         solved += 1
         d = density(cw)
         if d > best_density:
@@ -313,6 +329,17 @@ def main() -> None:
     parser.add_argument("--allow-repeat-themed", action="store_true",
                         help="Permit reusing Roman-themed answers from past "
                              "puzzles (by default they are excluded).")
+    parser.add_argument("--include-names", action="store_true",
+                        help="Add a bank of common proper names (first names + "
+                             "surnames) to the filler pool, clued generically "
+                             "(see build_names_dict.py). Off by default.")
+    parser.add_argument("--names-dict", default="names_caps.dict",
+                        help="WORD;SCORE name pool used with --include-names.")
+    parser.add_argument("--names-clues", default="names_clues.json",
+                        help="JSON {name: generic clue} used with --include-names.")
+    parser.add_argument("--max-names", type=int, default=6,
+                        help="Max proper-name answers allowed per board "
+                             "(only with --include-names; default: 6).")
     args = parser.parse_args()
 
     if args.trials < 1:
@@ -355,7 +382,26 @@ def main() -> None:
                     flush=True,
                 )
 
-    print(f"Loading scored wordlist(s) {', '.join(args.wordlist)} "
+    # Optional proper-name bank: load its generic clues and append its dict to
+    # the wordlist sources so the names merge into the filler pool.
+    wordlist_sources = list(args.wordlist)
+    if args.include_names:
+        global _NAME_CLUES
+        names_clues_path = Path(args.names_clues)
+        names_dict_path = Path(args.names_dict)
+        if not names_clues_path.exists() or not names_dict_path.exists():
+            parser.error(
+                f"--include-names needs {args.names_dict} and {args.names_clues}; "
+                "run `python build_names_dict.py` first (after downloading "
+                "names_data/)."
+            )
+        with open(names_clues_path, encoding="utf-8") as f:
+            _NAME_CLUES = {k.upper(): v for k, v in json.load(f).items()}
+        wordlist_sources.append(args.names_dict)
+        print(f"Proper names   : including {len(_NAME_CLUES):,} from "
+              f"{args.names_dict} (max {args.max_names}/board).", flush=True)
+
+    print(f"Loading scored wordlist(s) {', '.join(wordlist_sources)} "
           f"(score >= {args.min_score}) …", flush=True)
     t0 = time.time()
     # Words permanently blocked from appearing as filler answers —
@@ -366,17 +412,26 @@ def main() -> None:
     }
 
     scored = load_scored_wordlist(
-        args.wordlist, min_score=args.min_score,
+        wordlist_sources, min_score=args.min_score,
         exclude={w for w, _ in themed} | _BLOCKED, tsv_score=args.tsv_score,
     )
     print(f"  {len(scored):,} merged filler words loaded in {time.time() - t0:.1f}s.",
           flush=True)
     if not args.no_clues:
         t0 = time.time()
-        scored = filter_cluable(scored)
-        print(f"  {len(scored):,} have a WordNet definition "
-              f"(filtered in {time.time() - t0:.1f}s) — every filler will be cluable.",
-              flush=True)
+        # Proper names have no WordNet gloss but carry their own generic clue,
+        # so filter only the non-name entries and re-add the names afterwards.
+        if _NAME_CLUES:
+            non_names = [(w, s) for w, s in scored if w not in _NAME_CLUES]
+            kept_names = [(w, s) for w, s in scored if w in _NAME_CLUES]
+            scored = filter_cluable(non_names) + kept_names
+            print(f"  {len(scored):,} cluable (WordNet defs + {len(kept_names):,} "
+                  f"named) filtered in {time.time() - t0:.1f}s.", flush=True)
+        else:
+            scored = filter_cluable(scored)
+            print(f"  {len(scored):,} have a WordNet definition "
+                  f"(filtered in {time.time() - t0:.1f}s) — every filler will be cluable.",
+                  flush=True)
     index = WordIndex(scored)
 
     print(
