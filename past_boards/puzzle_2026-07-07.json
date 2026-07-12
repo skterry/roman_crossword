@@ -1,0 +1,572 @@
+{
+  "grid": [
+    [
+      "D",
+      "E",
+      "C",
+      "A",
+      "D",
+      "A",
+      "L",
+      "#",
+      "#",
+      "S",
+      "K",
+      "I"
+    ],
+    [
+      "E",
+      "#",
+      "O",
+      "M",
+      "A",
+      "N",
+      "I",
+      "#",
+      "#",
+      "W",
+      "A",
+      "R"
+    ],
+    [
+      "S",
+      "E",
+      "M",
+      "I",
+      "L",
+      "I",
+      "T",
+      "E",
+      "R",
+      "A",
+      "T",
+      "E"
+    ],
+    [
+      "A",
+      "#",
+      "M",
+      "#",
+      "#",
+      "#",
+      "#",
+      "G",
+      "A",
+      "S",
+      "#",
+      "#"
+    ],
+    [
+      "I",
+      "S",
+      "I",
+      "#",
+      "F",
+      "L",
+      "A",
+      "G",
+      "S",
+      "H",
+      "I",
+      "P"
+    ],
+    [
+      "#",
+      "#",
+      "S",
+      "O",
+      "I",
+      "E",
+      "S",
+      "#",
+      "#",
+      "B",
+      "N",
+      "S"
+    ],
+    [
+      "#",
+      "A",
+      "S",
+      "L",
+      "E",
+      "E",
+      "P",
+      "#",
+      "#",
+      "U",
+      "C",
+      "A"
+    ],
+    [
+      "C",
+      "H",
+      "I",
+      "E",
+      "F",
+      "#",
+      "#",
+      "A",
+      "S",
+      "C",
+      "H",
+      "#"
+    ],
+    [
+      "A",
+      "N",
+      "O",
+      "N",
+      "#",
+      "#",
+      "#",
+      "M",
+      "A",
+      "K",
+      "O",
+      "#"
+    ],
+    [
+      "N",
+      "#",
+      "N",
+      "#",
+      "C",
+      "O",
+      "R",
+      "O",
+      "L",
+      "L",
+      "A",
+      "S"
+    ],
+    [
+      "O",
+      "N",
+      "E",
+      "#",
+      "#",
+      "W",
+      "#",
+      "U",
+      "#",
+      "E",
+      "T",
+      "A"
+    ],
+    [
+      "E",
+      "S",
+      "R",
+      "#",
+      "I",
+      "N",
+      "F",
+      "R",
+      "A",
+      "R",
+      "E",
+      "D"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "DECADAL",
+      "clue": "___ Survey: astronomy community's ten-year planning document that prioritized Roman",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "DESAI",
+      "clue": "Booker Prize-winning author of 'The Inheritance of Loss'",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "COMMISSIONER",
+      "clue": "Gianni Infantino, Adam Silver, Roger Goodell, for example",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "AMI",
+      "clue": "'Friend' in French",
+      "row": 0,
+      "col": 3,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "DAL",
+      "clue": "Indian lentil dish",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "ANI",
+      "clue": "Black tropical American cuckoo",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "LIT",
+      "clue": "Study of novels and poems, for short",
+      "row": 0,
+      "col": 6,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "SKI",
+      "clue": "Snow runner for downhill gliding",
+      "row": 0,
+      "col": 9,
+      "direction": "across",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "SWASHBUCKLER",
+      "clue": "Daring sword-fighting adventurer",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "KAT",
+      "clue": "Katherine, familiarly",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "IRE",
+      "clue": "Anger; wrath",
+      "row": 0,
+      "col": 11,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "OMANI",
+      "clue": "Muscat resident",
+      "row": 1,
+      "col": 2,
+      "direction": "across",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "WAR",
+      "clue": "Armed conflict between nations",
+      "row": 1,
+      "col": 9,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "SEMILITERATE",
+      "clue": "Barely able to read",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "EGG",
+      "clue": "Hen's oval breakfast product",
+      "row": 2,
+      "col": 7,
+      "direction": "down",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "RAS",
+      "clue": "Royal Astronomical Society",
+      "row": 2,
+      "col": 8,
+      "direction": "down",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "GAS",
+      "clue": "Air-like state of matter",
+      "row": 3,
+      "col": 7,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "ISI",
+      "clue": "Information Sciences Institute, briefly",
+      "row": 4,
+      "col": 0,
+      "direction": "across",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "FLAGSHIP",
+      "clue": "Class of large NASA science mission; Roman joins Hubble and JWST in this tier",
+      "row": 4,
+      "col": 4,
+      "direction": "across",
+      "number": 17,
+      "is_themed": true
+    },
+    {
+      "word": "FIEF",
+      "clue": "Feudal lord's landholding",
+      "row": 4,
+      "col": 4,
+      "direction": "down",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "LEE",
+      "clue": "Marvel legend Stan __",
+      "row": 4,
+      "col": 5,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "ASP",
+      "clue": "Small venomous snake of Egypt",
+      "row": 4,
+      "col": 6,
+      "direction": "down",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "INCHOATE",
+      "clue": "Just begun; not fully formed",
+      "row": 4,
+      "col": 10,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "PSA",
+      "clue": "Announcement for a good cause, briefly",
+      "row": 4,
+      "col": 11,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "SOIES",
+      "clue": "Silks, in Lyon",
+      "row": 5,
+      "col": 2,
+      "direction": "across",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "OLEN",
+      "clue": "Spy novelist Steinhauer",
+      "row": 5,
+      "col": 3,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "BNS",
+      "clue": "Bachelor of Naval Science degree",
+      "row": 5,
+      "col": 9,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "ASLEEP",
+      "clue": "In a state of sleep",
+      "row": 6,
+      "col": 1,
+      "direction": "across",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "AHN",
+      "clue": "Duolingo co-founder Luis von __",
+      "row": 6,
+      "col": 1,
+      "direction": "down",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "UCA",
+      "clue": "Fiddler crab genus",
+      "row": 6,
+      "col": 9,
+      "direction": "across",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "CHIEF",
+      "clue": "Nancy Grace Roman's title at NASA; she was the first to hold it for astronomy",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 27,
+      "is_themed": true
+    },
+    {
+      "word": "CANOE",
+      "clue": "Paddled boat pointed at both ends",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "ASCH",
+      "clue": "Yiddish author Sholem ___",
+      "row": 7,
+      "col": 7,
+      "direction": "across",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "AMOUR",
+      "clue": "Love, in Paris",
+      "row": 7,
+      "col": 7,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "SAL",
+      "clue": "Table seasoning, in Seville",
+      "row": 7,
+      "col": 8,
+      "direction": "down",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "ANON",
+      "clue": "Anonymous",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "MAKO",
+      "clue": "Fast-swimming shark",
+      "row": 8,
+      "col": 7,
+      "direction": "across",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "COROLLAS",
+      "clue": "Groups of flower petals",
+      "row": 9,
+      "col": 4,
+      "direction": "across",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "OWN",
+      "clue": "Possess",
+      "row": 9,
+      "col": 5,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "SAD",
+      "clue": "Feeling blue; unhappy",
+      "row": 9,
+      "col": 11,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "ONE",
+      "clue": "Single; the number after zero",
+      "row": 10,
+      "col": 0,
+      "direction": "across",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "ETA",
+      "clue": "Airport arrival estimate, briefly",
+      "row": 10,
+      "col": 9,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "ESR",
+      "clue": "Blood-test inflammation measure, for short",
+      "row": 11,
+      "col": 0,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "INFRARED",
+      "clue": "Region of the spectrum where Roman primarily observes",
+      "row": 11,
+      "col": 4,
+      "direction": "across",
+      "number": 39,
+      "is_themed": true
+    }
+  ]
+}
