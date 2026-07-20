@@ -219,7 +219,7 @@
     },
     {
       "word": "CSS",
-      "clue": "More than one atom of cesium, briefly",
+      "clue": "Code that makes web pages look pretty: Abbr.",
       "row": 0,
       "col": 5,
       "direction": "down",
@@ -255,7 +255,7 @@
     },
     {
       "word": "MINUEND",
-      "clue": "The number from which the subtrahend is subtracted",
+      "clue": "The number from which the subtrahend is subtracted (very hard)",
       "row": 0,
       "col": 9,
       "direction": "down",
@@ -309,7 +309,7 @@
     },
     {
       "word": "SENSE",
-      "clue": "A general conscious awareness",
+      "clue": "Sight, taste, sound, small, etc",
       "row": 2,
       "col": 11,
       "direction": "down",
@@ -327,7 +327,7 @@
     },
     {
       "word": "NATURE",
-      "clue": "The essential qualities or characteristics by which something is recognized",
+      "clue": "Scientific journal, very expensive to publish in",
       "row": 3,
       "col": 6,
       "direction": "across",
@@ -426,7 +426,7 @@
     },
     {
       "word": "XCI",
-      "clue": "Being one more than ninety",
+      "clue": "One more than ninety, in Roman numeral",
       "row": 7,
       "col": 1,
       "direction": "down",
