@@ -1,0 +1,527 @@
+{
+  "grid": [
+    [
+      "B",
+      "L",
+      "E",
+      "N",
+      "D",
+      "I",
+      "N",
+      "G",
+      "#",
+      "M",
+      "S",
+      "G"
+    ],
+    [
+      "R",
+      "O",
+      "M",
+      "#",
+      "I",
+      "N",
+      "#",
+      "S",
+      "#",
+      "A",
+      "#",
+      "A"
+    ],
+    [
+      "I",
+      "M",
+      "M",
+      "O",
+      "D",
+      "E",
+      "R",
+      "A",
+      "T",
+      "I",
+      "O",
+      "N"
+    ],
+    [
+      "M",
+      "B",
+      "A",
+      "#",
+      "O",
+      "S",
+      "S",
+      "#",
+      "E",
+      "D",
+      "#",
+      "T"
+    ],
+    [
+      "#",
+      "A",
+      "N",
+      "T",
+      "S",
+      "#",
+      "#",
+      "S",
+      "P",
+      "E",
+      "C",
+      "Z"
+    ],
+    [
+      "T",
+      "R",
+      "U",
+      "E",
+      "#",
+      "#",
+      "#",
+      "P",
+      "I",
+      "N",
+      "#",
+      "#"
+    ],
+    [
+      "I",
+      "D",
+      "E",
+      "A",
+      "#",
+      "#",
+      "L",
+      "A",
+      "D",
+      "L",
+      "E",
+      "#"
+    ],
+    [
+      "M",
+      "I",
+      "L",
+      "K",
+      "Y",
+      "W",
+      "A",
+      "Y",
+      "#",
+      "I",
+      "C",
+      "C"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "W",
+      "O",
+      "E",
+      "S",
+      "#",
+      "#",
+      "N",
+      "#",
+      "A"
+    ],
+    [
+      "U",
+      "N",
+      "W",
+      "O",
+      "R",
+      "T",
+      "H",
+      "I",
+      "N",
+      "E",
+      "S",
+      "S"
+    ],
+    [
+      "K",
+      "E",
+      "#",
+      "O",
+      "E",
+      "#",
+      "#",
+      "P",
+      "E",
+      "S",
+      "#",
+      "S"
+    ],
+    [
+      "E",
+      "Y",
+      "E",
+      "D",
+      "#",
+      "#",
+      "#",
+      "S",
+      "T",
+      "S",
+      "C",
+      "I"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "BLENDING",
+      "clue": "Crowded-field problem especially relevant in Galactic Bulge surveys",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "BRIM",
+      "clue": "Hat part",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "LOMBARDI",
+      "clue": "NFL's championship hardware",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "EMMANUEL",
+      "clue": "French president Macron",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "DIDOS",
+      "clue": "Playful antics; capers",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "INES",
+      "clue": "Spanish name meaning 'chaste'",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "GSA",
+      "clue": "Federal procurement agency, briefly",
+      "row": 0,
+      "col": 7,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "MSG",
+      "clue": "Flavor enhancer in cooking, briefly",
+      "row": 0,
+      "col": 9,
+      "direction": "across",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "MAIDENLINESS",
+      "clue": "Behavior befitting a young maiden",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "GANTZ",
+      "clue": "Sci-fi manga about resurrected people fighting aliens",
+      "row": 0,
+      "col": 11,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "ROM",
+      "clue": "Computer memory you can read but not change",
+      "row": 1,
+      "col": 0,
+      "direction": "across",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "IMMODERATION",
+      "clue": "Lack of restraint; excess",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "TEPID",
+      "clue": "Moderately warm",
+      "row": 2,
+      "col": 8,
+      "direction": "down",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "MBA",
+      "clue": "A master's degree in business",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "OSS",
+      "clue": "WWII spy agency that preceded the CIA",
+      "row": 3,
+      "col": 4,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "ANTS",
+      "clue": "Picnic-crashing colony insects",
+      "row": 4,
+      "col": 1,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "TEAKWOOD",
+      "clue": "Durable wood prized for fine furniture",
+      "row": 4,
+      "col": 3,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "SPECZ",
+      "clue": "Distance estimate obtained from spectroscopy",
+      "row": 4,
+      "col": 7,
+      "direction": "across",
+      "number": 19,
+      "is_themed": true
+    },
+    {
+      "word": "SPAY",
+      "clue": "Neuter, as a pet",
+      "row": 4,
+      "col": 7,
+      "direction": "down",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "TRUE",
+      "clue": "Correct, Factual",
+      "row": 5,
+      "col": 0,
+      "direction": "across",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "TIM",
+      "clue": "Tiny __ (Charles Dickens character)",
+      "row": 5,
+      "col": 0,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "PIN",
+      "clue": "Small fastener, or a bowling target",
+      "row": 5,
+      "col": 7,
+      "direction": "across",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "IDEA",
+      "clue": "Thought; notion",
+      "row": 6,
+      "col": 0,
+      "direction": "across",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "LADLE",
+      "clue": "Long-handled soup server",
+      "row": 6,
+      "col": 6,
+      "direction": "across",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "LASH",
+      "clue": "Part of a mascara brush's target",
+      "row": 6,
+      "col": 6,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "MILKYWAY",
+      "clue": "Galaxy whose bulge Roman will repeatedly survey",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 25,
+      "is_themed": true
+    },
+    {
+      "word": "YORE",
+      "clue": "Time long past",
+      "row": 7,
+      "col": 4,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "WET",
+      "clue": "Soaked; not dry",
+      "row": 7,
+      "col": 5,
+      "direction": "down",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "ICC",
+      "clue": "Cricket's governing body: Abbr.",
+      "row": 7,
+      "col": 9,
+      "direction": "across",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "CASSI",
+      "clue": "Cassie looking for an 'E'",
+      "row": 7,
+      "col": 11,
+      "direction": "down",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "WOES",
+      "clue": "Troubles; sorrows",
+      "row": 8,
+      "col": 3,
+      "direction": "across",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "UNWORTHINESS",
+      "clue": "Lack of merit or value",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "UKE",
+      "clue": "Small four-stringed Hawaiian instrument",
+      "row": 9,
+      "col": 0,
+      "direction": "down",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "NEY",
+      "clue": "Napoleon's Marshal Michel __",
+      "row": 9,
+      "col": 1,
+      "direction": "down",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "IPS",
+      "clue": "Web addresses (Abbr.)",
+      "row": 9,
+      "col": 7,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "NET",
+      "clue": "Basketball hoop's mesh",
+      "row": 9,
+      "col": 8,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "PES",
+      "clue": "Foot, in anatomy",
+      "row": 10,
+      "col": 7,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "EYED",
+      "clue": "Looked at closely",
+      "row": 11,
+      "col": 0,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "STSCI",
+      "clue": "Institute that will help operate Roman science programs",
+      "row": 11,
+      "col": 7,
+      "direction": "across",
+      "number": 39,
+      "is_themed": true
+    }
+  ]
+}
