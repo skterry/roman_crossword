@@ -1,0 +1,554 @@
+{
+  "grid": [
+    [
+      "A",
+      "R",
+      "E",
+      "A",
+      "#",
+      "C",
+      "L",
+      "A",
+      "I",
+      "M",
+      "S",
+      "#"
+    ],
+    [
+      "E",
+      "U",
+      "N",
+      "#",
+      "#",
+      "S",
+      "Y",
+      "L",
+      "V",
+      "I",
+      "A",
+      "#"
+    ],
+    [
+      "S",
+      "S",
+      "R",
+      "I",
+      "#",
+      "S",
+      "I",
+      "L",
+      "E",
+      "N",
+      "U",
+      "S"
+    ],
+    [
+      "I",
+      "S",
+      "O",
+      "N",
+      "#",
+      "#",
+      "N",
+      "A",
+      "T",
+      "U",
+      "R",
+      "E"
+    ],
+    [
+      "R",
+      "#",
+      "L",
+      "#",
+      "E",
+      "I",
+      "G",
+      "H",
+      "T",
+      "E",
+      "E",
+      "N"
+    ],
+    [
+      "#",
+      "A",
+      "L",
+      "T",
+      "A",
+      "R",
+      "#",
+      "#",
+      "E",
+      "N",
+      "L",
+      "S"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "E",
+      "R",
+      "I",
+      "C",
+      "#",
+      "#",
+      "D",
+      "#",
+      "E"
+    ],
+    [
+      "E",
+      "X",
+      "P",
+      "A",
+      "N",
+      "S",
+      "I",
+      "O",
+      "N",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "B",
+      "C",
+      "E",
+      "#",
+      "#",
+      "#",
+      "O",
+      "V",
+      "I",
+      "N",
+      "E",
+      "#"
+    ],
+    [
+      "B",
+      "I",
+      "T",
+      "#",
+      "L",
+      "I",
+      "#",
+      "E",
+      "H",
+      "#",
+      "N",
+      "G"
+    ],
+    [
+      "E",
+      "#",
+      "E",
+      "#",
+      "E",
+      "L",
+      "F",
+      "R",
+      "I",
+      "E",
+      "D",
+      "A"
+    ],
+    [
+      "D",
+      "M",
+      "S",
+      "#",
+      "S",
+      "L",
+      "I",
+      "T",
+      "L",
+      "E",
+      "S",
+      "S"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "AREA",
+      "clue": "Survey quantity often traded against depth",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "AESIR",
+      "clue": "(Norse mythology) the chief race of gods living at Asgard",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "RUSS",
+      "clue": "Hip-hop artist with the album 'Zoo'",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "ENROLL",
+      "clue": "Register formally as a participant or member",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "CLAIMS",
+      "clue": "An assertion of a right (as to money or property)",
+      "row": 0,
+      "col": 5,
+      "direction": "across",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "CSS",
+      "clue": "Code that makes web pages look pretty: Abbr.",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "LYING",
+      "clue": "The deliberate act of deviating from the truth",
+      "row": 0,
+      "col": 6,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "ALLAH",
+      "clue": "Name for God in Islam",
+      "row": 0,
+      "col": 7,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "IVETTE",
+      "clue": "YVETTE with an i",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "MINUEND",
+      "clue": "The number from which the subtrahend is subtracted (very hard)",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "SAUREL",
+      "clue": "Large elongated compressed food fish of the Atlantic waters of Europe",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "EUN",
+      "clue": "Actress Youn of Minari",
+      "row": 1,
+      "col": 0,
+      "direction": "across",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "SYLVIA",
+      "clue": "Poet Plath",
+      "row": 1,
+      "col": 5,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "SSRI",
+      "clue": "Antidepressant that boosts serotonin availability (abbr.)",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "SILENUS",
+      "clue": "Any of the minor woodland deities who were companions of Dionysus (similar to the satyrs)",
+      "row": 2,
+      "col": 5,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "SENSE",
+      "clue": "Sight, taste, sound, small, etc",
+      "row": 2,
+      "col": 11,
+      "direction": "down",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "ISON",
+      "clue": "Famous comet discovered by Russian astronomers in 2012",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "NATURE",
+      "clue": "Scientific journal, very expensive to publish in",
+      "row": 3,
+      "col": 6,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "EIGHTEEN",
+      "clue": "Number of H4RG detector arrays in Roman's focal plane",
+      "row": 4,
+      "col": 4,
+      "direction": "across",
+      "number": 18,
+      "is_themed": true
+    },
+    {
+      "word": "EARN",
+      "clue": "____ on some commercial or business transaction; ____ as salary or wages",
+      "row": 4,
+      "col": 4,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "IRIS",
+      "clue": "Flower named for the goddess of the rainbow",
+      "row": 4,
+      "col": 5,
+      "direction": "down",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "ALTAR",
+      "clue": "The table in Christian churches where communion is given",
+      "row": 5,
+      "col": 1,
+      "direction": "across",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "TEA",
+      "clue": "A beverage made by steeping ____ leaves in water",
+      "row": 5,
+      "col": 3,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "ENLS",
+      "clue": "Painful skin condition linked to leprosy (abbr.)",
+      "row": 5,
+      "col": 8,
+      "direction": "across",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "ERIC",
+      "clue": "Famous guitarist Clapton",
+      "row": 6,
+      "col": 3,
+      "direction": "across",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "CIO",
+      "clue": "A federation of North American industrial unions that merged with the American Federation of Labor in 1955",
+      "row": 6,
+      "col": 6,
+      "direction": "down",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "EXPANSION",
+      "clue": "Roman will measure the rate of cosmic ___ using Type Ia supernovae",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 25,
+      "is_themed": true
+    },
+    {
+      "word": "EBBED",
+      "clue": "Flow back or recede",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "XCI",
+      "clue": "One more than ninety, in Roman numeral",
+      "row": 7,
+      "col": 1,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "PETES",
+      "clue": "Stroke or caress gently",
+      "row": 7,
+      "col": 2,
+      "direction": "down",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "OVERT",
+      "clue": "Open and observable; not secret or hidden",
+      "row": 7,
+      "col": 7,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "NIHIL",
+      "clue": "Latin for 'nothing'",
+      "row": 7,
+      "col": 8,
+      "direction": "down",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "BCE",
+      "clue": "Before the Common Era, in dates",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "OVINE",
+      "clue": "Of or pertaining to or of the nature of or characteristic of a sheep or sheep",
+      "row": 8,
+      "col": 6,
+      "direction": "across",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "ENDS",
+      "clue": "Either extremity of something that has length",
+      "row": 8,
+      "col": 10,
+      "direction": "down",
+      "number": 32,
+      "is_themed": false
+    },
+    {
+      "word": "BIT",
+      "clue": "A small piece or quantity of something",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "LES",
+      "clue": "The, in Paris",
+      "row": 9,
+      "col": 4,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "ILL",
+      "clue": "An often persistent bodily disorder or disease; a cause for complaining",
+      "row": 9,
+      "col": 5,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "GAS",
+      "clue": "State of matter that expands to fill its container",
+      "row": 9,
+      "col": 11,
+      "direction": "down",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "ELFRIEDA",
+      "clue": "Magical creature with a French summer?",
+      "row": 10,
+      "col": 4,
+      "direction": "across",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "DMS",
+      "clue": "Diabetes mellitus, for short",
+      "row": 11,
+      "col": 0,
+      "direction": "across",
+      "number": 42,
+      "is_themed": false
+    },
+    {
+      "word": "SLITLESS",
+      "clue": "Type of spectroscopy Roman performs without restricting light to a narrow slit",
+      "row": 11,
+      "col": 4,
+      "direction": "across",
+      "number": 43,
+      "is_themed": true
+    }
+  ]
+}
