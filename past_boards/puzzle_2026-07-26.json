@@ -1,0 +1,563 @@
+{
+  "grid": [
+    [
+      "F",
+      "I",
+      "L",
+      "A",
+      "M",
+      "E",
+      "N",
+      "T",
+      "#",
+      "C",
+      "O",
+      "T"
+    ],
+    [
+      "Y",
+      "O",
+      "#",
+      "L",
+      "A",
+      "N",
+      "#",
+      "A",
+      "#",
+      "O",
+      "C",
+      "T"
+    ],
+    [
+      "E",
+      "N",
+      "D",
+      "O",
+      "R",
+      "S",
+      "E",
+      "M",
+      "E",
+      "N",
+      "T",
+      "S"
+    ],
+    [
+      "#",
+      "S",
+      "A",
+      "N",
+      "K",
+      "#",
+      "#",
+      "A",
+      "#",
+      "F",
+      "A",
+      "#"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "S",
+      "U",
+      "P",
+      "E",
+      "R",
+      "N",
+      "O",
+      "V",
+      "A"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "O",
+      "P",
+      "A",
+      "L",
+      "#",
+      "E",
+      "R",
+      "I",
+      "N"
+    ],
+    [
+      "S",
+      "P",
+      "F",
+      "#",
+      "#",
+      "N",
+      "E",
+      "W",
+      "S",
+      "M",
+      "A",
+      "N"
+    ],
+    [
+      "H",
+      "A",
+      "L",
+      "O",
+      "#",
+      "#",
+      "V",
+      "A",
+      "T",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "I",
+      "#",
+      "A",
+      "K",
+      "#",
+      "G",
+      "A",
+      "L",
+      "#",
+      "V",
+      "I",
+      "S"
+    ],
+    [
+      "M",
+      "I",
+      "S",
+      "S",
+      "T",
+      "A",
+      "T",
+      "E",
+      "M",
+      "E",
+      "N",
+      "T"
+    ],
+    [
+      "M",
+      "S",
+      "H",
+      "#",
+      "#",
+      "I",
+      "O",
+      "S",
+      "#",
+      "I",
+      "C",
+      "Y"
+    ],
+    [
+      "Y",
+      "A",
+      "Y",
+      "#",
+      "P",
+      "A",
+      "R",
+      "A",
+      "L",
+      "L",
+      "A",
+      "X"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "FILAMENT",
+      "clue": "Thread-like structure connecting galaxy clusters in the cosmic web",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "FYE",
+      "clue": "For Your Entertainment, briefly",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "IONS",
+      "clue": "Charged atoms",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "ALONSO",
+      "clue": "Two-time F1 champion Fernando",
+      "row": 0,
+      "col": 3,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "MARKUP",
+      "clue": "Retailer's added cost over wholesale",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "ENS",
+      "clue": "Typographer's half-em widths",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "TAMAR",
+      "clue": "Biblical twin of Esau (Jacob)",
+      "row": 0,
+      "col": 7,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "COT",
+      "clue": "Simple folding bed",
+      "row": 0,
+      "col": 9,
+      "direction": "across",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "CONFORM",
+      "clue": "Fall in line",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "OCTAVIA",
+      "clue": "Nero's first wife",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "TTS",
+      "clue": "Digital speech (Abbr.)",
+      "row": 0,
+      "col": 11,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "LAN",
+      "clue": "Wi-Fi alternative, sometimes",
+      "row": 1,
+      "col": 3,
+      "direction": "across",
+      "number": 11,
+      "is_themed": false
+    },
+    {
+      "word": "OCT",
+      "clue": "Halloween's month: abbr.",
+      "row": 1,
+      "col": 9,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "ENDORSEMENTS",
+      "clue": "Celebrity product backings",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "SANK",
+      "clue": "Went underwater",
+      "row": 3,
+      "col": 1,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "SUPERNOVA",
+      "clue": "Exploding star used to probe cosmic expansion",
+      "row": 4,
+      "col": 3,
+      "direction": "across",
+      "number": 17,
+      "is_themed": true
+    },
+    {
+      "word": "PAN",
+      "clue": "Frying vessel",
+      "row": 4,
+      "col": 5,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "ELEVATOR",
+      "clue": "Building's vertical lift",
+      "row": 4,
+      "col": 6,
+      "direction": "down",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "NEST",
+      "clue": "Bird's home",
+      "row": 4,
+      "col": 8,
+      "direction": "down",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "ANN",
+      "clue": "__ Arbor, Michigan",
+      "row": 4,
+      "col": 11,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "OPAL",
+      "clue": "Iridescent October birthstone",
+      "row": 5,
+      "col": 3,
+      "direction": "across",
+      "number": 22,
+      "is_themed": false
+    },
+    {
+      "word": "ERIN",
+      "clue": "Poetic name for Ireland",
+      "row": 5,
+      "col": 8,
+      "direction": "across",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "SPF",
+      "clue": "Sunscreen rating: abbr.",
+      "row": 6,
+      "col": 0,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "SHIMMY",
+      "clue": "Shake or Wobble",
+      "row": 6,
+      "col": 0,
+      "direction": "down",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "FLASHY",
+      "clue": "Tastelessly showy",
+      "row": 6,
+      "col": 2,
+      "direction": "down",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "NEWSMAN",
+      "clue": "Cronkite or Rather",
+      "row": 6,
+      "col": 5,
+      "direction": "across",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "WALESA",
+      "clue": "Polish Solidarity leader Lech ___",
+      "row": 6,
+      "col": 7,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "HALO",
+      "clue": "Type of orbit Roman traces around its gravitational balance point",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 29,
+      "is_themed": true
+    },
+    {
+      "word": "OKS",
+      "clue": "Gives the go-ahead to",
+      "row": 7,
+      "col": 3,
+      "direction": "down",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "VAT",
+      "clue": "Large tub for liquids",
+      "row": 7,
+      "col": 6,
+      "direction": "across",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "GAL",
+      "clue": "Gallon: abbr.",
+      "row": 8,
+      "col": 5,
+      "direction": "across",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "GAIA",
+      "clue": "Greek earth goddess",
+      "row": 8,
+      "col": 5,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "VIS",
+      "clue": "Latin for 'force'",
+      "row": 8,
+      "col": 9,
+      "direction": "across",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "VEIL",
+      "clue": "Bride's face covering",
+      "row": 8,
+      "col": 9,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "INCA",
+      "clue": "Andean empire of old Peru",
+      "row": 8,
+      "col": 10,
+      "direction": "down",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "STYX",
+      "clue": "River of the underworld",
+      "row": 8,
+      "col": 11,
+      "direction": "down",
+      "number": 36,
+      "is_themed": false
+    },
+    {
+      "word": "MISSTATEMENT",
+      "clue": "An inaccurate assertion",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "ISA",
+      "clue": "British financial plan, briefly",
+      "row": 9,
+      "col": 1,
+      "direction": "down",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "MSH",
+      "clue": "Melanocyte-stimulating hormone: abbr.",
+      "row": 10,
+      "col": 0,
+      "direction": "across",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "IOS",
+      "clue": "Greek island in the Cyclades",
+      "row": 10,
+      "col": 5,
+      "direction": "across",
+      "number": 40,
+      "is_themed": false
+    },
+    {
+      "word": "ICY",
+      "clue": "Frost-covered",
+      "row": 10,
+      "col": 9,
+      "direction": "across",
+      "number": 41,
+      "is_themed": false
+    },
+    {
+      "word": "YAY",
+      "clue": "Cry of delight",
+      "row": 11,
+      "col": 0,
+      "direction": "across",
+      "number": 42,
+      "is_themed": false
+    },
+    {
+      "word": "PARALLAX",
+      "clue": "Stellar (geometric) distance method using Earth's annual orbital motion",
+      "row": 11,
+      "col": 4,
+      "direction": "across",
+      "number": 43,
+      "is_themed": true
+    }
+  ]
+}
