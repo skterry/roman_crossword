@@ -1,0 +1,581 @@
+{
+  "grid": [
+    [
+      "D",
+      "I",
+      "T",
+      "H",
+      "E",
+      "R",
+      "#",
+      "A",
+      "C",
+      "T",
+      "S",
+      "#"
+    ],
+    [
+      "A",
+      "S",
+      "H",
+      "#",
+      "R",
+      "E",
+      "#",
+      "S",
+      "A",
+      "H",
+      "I",
+      "B"
+    ],
+    [
+      "T",
+      "I",
+      "E",
+      "R",
+      "R",
+      "A",
+      "#",
+      "P",
+      "L",
+      "U",
+      "M",
+      "E"
+    ],
+    [
+      "E",
+      "A",
+      "T",
+      "#",
+      "A",
+      "R",
+      "C",
+      "#",
+      "E",
+      "M",
+      "I",
+      "R"
+    ],
+    [
+      "#",
+      "H",
+      "A",
+      "R",
+      "T",
+      "#",
+      "H",
+      "U",
+      "B",
+      "B",
+      "L",
+      "E"
+    ],
+    [
+      "#",
+      "#",
+      "#",
+      "E",
+      "A",
+      "S",
+      "E",
+      "S",
+      "#",
+      "S",
+      "E",
+      "T"
+    ],
+    [
+      "#",
+      "D",
+      "O",
+      "C",
+      "#",
+      "N",
+      "E",
+      "E",
+      "D",
+      "#",
+      "#",
+      "#"
+    ],
+    [
+      "D",
+      "A",
+      "R",
+      "K",
+      "C",
+      "U",
+      "R",
+      "R",
+      "E",
+      "N",
+      "T",
+      "#"
+    ],
+    [
+      "A",
+      "N",
+      "A",
+      "L",
+      "O",
+      "G",
+      "#",
+      "#",
+      "F",
+      "A",
+      "R",
+      "#"
+    ],
+    [
+      "M",
+      "A",
+      "T",
+      "E",
+      "#",
+      "#",
+      "P",
+      "R",
+      "O",
+      "B",
+      "E",
+      "S"
+    ],
+    [
+      "#",
+      "#",
+      "E",
+      "S",
+      "P",
+      "#",
+      "#",
+      "N",
+      "R",
+      "#",
+      "A",
+      "P"
+    ],
+    [
+      "#",
+      "#",
+      "D",
+      "S",
+      "L",
+      "#",
+      "L",
+      "A",
+      "M",
+      "B",
+      "D",
+      "A"
+    ]
+  ],
+  "rows": 12,
+  "cols": 12,
+  "placements": [
+    {
+      "word": "DITHER",
+      "clue": "Small telescope offset repeated many times to improve imaging",
+      "row": 0,
+      "col": 0,
+      "direction": "across",
+      "number": 1,
+      "is_themed": true
+    },
+    {
+      "word": "DATE",
+      "clue": "The specified day of the month",
+      "row": 0,
+      "col": 0,
+      "direction": "down",
+      "number": 1,
+      "is_themed": false
+    },
+    {
+      "word": "ISIAH",
+      "clue": "Basketball Hall of Famer __ Thomas",
+      "row": 0,
+      "col": 1,
+      "direction": "down",
+      "number": 2,
+      "is_themed": false
+    },
+    {
+      "word": "THETA",
+      "clue": "Greek letter after eta",
+      "row": 0,
+      "col": 2,
+      "direction": "down",
+      "number": 3,
+      "is_themed": false
+    },
+    {
+      "word": "ERRATA",
+      "clue": "List of book corrections",
+      "row": 0,
+      "col": 4,
+      "direction": "down",
+      "number": 4,
+      "is_themed": false
+    },
+    {
+      "word": "REAR",
+      "clue": "Back part",
+      "row": 0,
+      "col": 5,
+      "direction": "down",
+      "number": 5,
+      "is_themed": false
+    },
+    {
+      "word": "ACTS",
+      "clue": "Play divisions (referring to theater)",
+      "row": 0,
+      "col": 7,
+      "direction": "across",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "ASP",
+      "clue": "Cleopatra's snake",
+      "row": 0,
+      "col": 7,
+      "direction": "down",
+      "number": 6,
+      "is_themed": false
+    },
+    {
+      "word": "CALEB",
+      "clue": "Biblical spy sent by Moses",
+      "row": 0,
+      "col": 8,
+      "direction": "down",
+      "number": 7,
+      "is_themed": false
+    },
+    {
+      "word": "THUMBS",
+      "clue": "Hitchhiker's digits",
+      "row": 0,
+      "col": 9,
+      "direction": "down",
+      "number": 8,
+      "is_themed": false
+    },
+    {
+      "word": "SIMILE",
+      "clue": "Figure of speech using 'like' or 'as'",
+      "row": 0,
+      "col": 10,
+      "direction": "down",
+      "number": 9,
+      "is_themed": false
+    },
+    {
+      "word": "ASH",
+      "clue": "Pokémon trainer Ketchum",
+      "row": 1,
+      "col": 0,
+      "direction": "across",
+      "number": 10,
+      "is_themed": false
+    },
+    {
+      "word": "SAHIB",
+      "clue": "Sir, in Delhi",
+      "row": 1,
+      "col": 7,
+      "direction": "across",
+      "number": 12,
+      "is_themed": false
+    },
+    {
+      "word": "BERET",
+      "clue": "Flat French cap",
+      "row": 1,
+      "col": 11,
+      "direction": "down",
+      "number": 13,
+      "is_themed": false
+    },
+    {
+      "word": "TIERRA",
+      "clue": "Spanish earth",
+      "row": 2,
+      "col": 0,
+      "direction": "across",
+      "number": 14,
+      "is_themed": false
+    },
+    {
+      "word": "PLUME",
+      "clue": "Feathery tuft",
+      "row": 2,
+      "col": 7,
+      "direction": "across",
+      "number": 15,
+      "is_themed": false
+    },
+    {
+      "word": "EAT",
+      "clue": "Take in solid food",
+      "row": 3,
+      "col": 0,
+      "direction": "across",
+      "number": 16,
+      "is_themed": false
+    },
+    {
+      "word": "ARC",
+      "clue": "Curved path",
+      "row": 3,
+      "col": 4,
+      "direction": "across",
+      "number": 17,
+      "is_themed": false
+    },
+    {
+      "word": "CHEER",
+      "clue": "A cry or shout of approval",
+      "row": 3,
+      "col": 6,
+      "direction": "down",
+      "number": 18,
+      "is_themed": false
+    },
+    {
+      "word": "EMIR",
+      "clue": "Middle East title",
+      "row": 3,
+      "col": 8,
+      "direction": "across",
+      "number": 19,
+      "is_themed": false
+    },
+    {
+      "word": "HART",
+      "clue": "Adult male red deer",
+      "row": 4,
+      "col": 1,
+      "direction": "across",
+      "number": 20,
+      "is_themed": false
+    },
+    {
+      "word": "RECKLESS",
+      "clue": "Heedless of danger",
+      "row": 4,
+      "col": 3,
+      "direction": "down",
+      "number": 21,
+      "is_themed": false
+    },
+    {
+      "word": "HUBBLE",
+      "clue": "Nancy Grace Roman was given the nickname 'the mother of ____'",
+      "row": 4,
+      "col": 6,
+      "direction": "across",
+      "number": 22,
+      "is_themed": true
+    },
+    {
+      "word": "USER",
+      "clue": "One who uses something",
+      "row": 4,
+      "col": 7,
+      "direction": "down",
+      "number": 23,
+      "is_themed": false
+    },
+    {
+      "word": "EASES",
+      "clue": "Lets up",
+      "row": 5,
+      "col": 3,
+      "direction": "across",
+      "number": 24,
+      "is_themed": false
+    },
+    {
+      "word": "SNUG",
+      "clue": "Cozy",
+      "row": 5,
+      "col": 5,
+      "direction": "down",
+      "number": 25,
+      "is_themed": false
+    },
+    {
+      "word": "SET",
+      "clue": "Group that belongs together",
+      "row": 5,
+      "col": 9,
+      "direction": "across",
+      "number": 26,
+      "is_themed": false
+    },
+    {
+      "word": "DOC",
+      "clue": "A licensed medical practitioner",
+      "row": 6,
+      "col": 1,
+      "direction": "across",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "DANA",
+      "clue": "Comedian Carvey",
+      "row": 6,
+      "col": 1,
+      "direction": "down",
+      "number": 27,
+      "is_themed": false
+    },
+    {
+      "word": "ORATED",
+      "clue": "Talk pompously",
+      "row": 6,
+      "col": 2,
+      "direction": "down",
+      "number": 28,
+      "is_themed": false
+    },
+    {
+      "word": "NEED",
+      "clue": "A condition requiring relief",
+      "row": 6,
+      "col": 5,
+      "direction": "across",
+      "number": 29,
+      "is_themed": false
+    },
+    {
+      "word": "DEFORM",
+      "clue": "Make formless",
+      "row": 6,
+      "col": 8,
+      "direction": "down",
+      "number": 30,
+      "is_themed": false
+    },
+    {
+      "word": "DARKCURRENT",
+      "clue": "Signal present even when no photons arrive",
+      "row": 7,
+      "col": 0,
+      "direction": "across",
+      "number": 31,
+      "is_themed": true
+    },
+    {
+      "word": "DAM",
+      "clue": "Barrier holding back water",
+      "row": 7,
+      "col": 0,
+      "direction": "down",
+      "number": 31,
+      "is_themed": false
+    },
+    {
+      "word": "NAB",
+      "clue": "Catch red-handed",
+      "row": 7,
+      "col": 9,
+      "direction": "down",
+      "number": 33,
+      "is_themed": false
+    },
+    {
+      "word": "TREAD",
+      "clue": "A step in walking or running",
+      "row": 7,
+      "col": 10,
+      "direction": "down",
+      "number": 34,
+      "is_themed": false
+    },
+    {
+      "word": "ANALOG",
+      "clue": "Not digital",
+      "row": 8,
+      "col": 0,
+      "direction": "across",
+      "number": 35,
+      "is_themed": false
+    },
+    {
+      "word": "FAR",
+      "clue": "Distant",
+      "row": 8,
+      "col": 8,
+      "direction": "across",
+      "number": 36,
+      "is_themed": false
+    },
+    {
+      "word": "MATE",
+      "clue": "Ship's officer",
+      "row": 9,
+      "col": 0,
+      "direction": "across",
+      "number": 37,
+      "is_themed": false
+    },
+    {
+      "word": "PROBES",
+      "clue": "Investigations",
+      "row": 9,
+      "col": 6,
+      "direction": "across",
+      "number": 38,
+      "is_themed": false
+    },
+    {
+      "word": "RNA",
+      "clue": "Genetic messenger molecule",
+      "row": 9,
+      "col": 7,
+      "direction": "down",
+      "number": 39,
+      "is_themed": false
+    },
+    {
+      "word": "SPA",
+      "clue": "Health resort",
+      "row": 9,
+      "col": 11,
+      "direction": "down",
+      "number": 40,
+      "is_themed": false
+    },
+    {
+      "word": "ESP",
+      "clue": "Alleged sixth sense",
+      "row": 10,
+      "col": 2,
+      "direction": "across",
+      "number": 41,
+      "is_themed": false
+    },
+    {
+      "word": "DSL",
+      "clue": "Broadband alternative to dial-up",
+      "row": 11,
+      "col": 2,
+      "direction": "across",
+      "number": 45,
+      "is_themed": false
+    },
+    {
+      "word": "LAMBDA",
+      "clue": "Greek letter denoting the cosmological constant in Einstein's equations",
+      "row": 11,
+      "col": 6,
+      "direction": "across",
+      "number": 46,
+      "is_themed": true
+    }
+  ]
+}
