@@ -1,0 +1,590 @@
+{
+ "grid": [
+  [
+   "C",
+   "E",
+   "P",
+   "H",
+   "E",
+   "I",
+   "D",
+   "#",
+   "#",
+   "W",
+   "O",
+   "W"
+  ],
+  [
+   "I",
+   "N",
+   "R",
+   "O",
+   "A",
+   "D",
+   "#",
+   "#",
+   "#",
+   "H",
+   "#",
+   "H"
+  ],
+  [
+   "O",
+   "V",
+   "E",
+   "R",
+   "S",
+   "E",
+   "E",
+   "R",
+   "#",
+   "E",
+   "R",
+   "A"
+  ],
+  [
+   "#",
+   "Y",
+   "A",
+   "T",
+   "E",
+   "S",
+   "#",
+   "I",
+   "D",
+   "E",
+   "A",
+   "L"
+  ],
+  [
+   "#",
+   "#",
+   "C",
+   "O",
+   "D",
+   "#",
+   "#",
+   "B",
+   "U",
+   "L",
+   "G",
+   "E"
+  ],
+  [
+   "H",
+   "A",
+   "H",
+   "N",
+   "#",
+   "#",
+   "#",
+   "#",
+   "A",
+   "B",
+   "E",
+   "#"
+  ],
+  [
+   "A",
+   "L",
+   "E",
+   "#",
+   "O",
+   "R",
+   "A",
+   "#",
+   "N",
+   "A",
+   "S",
+   "#"
+  ],
+  [
+   "D",
+   "A",
+   "R",
+   "K",
+   "M",
+   "A",
+   "T",
+   "T",
+   "E",
+   "R",
+   "#",
+   "#"
+  ],
+  [
+   "#",
+   "#",
+   "#",
+   "L",
+   "E",
+   "V",
+   "E",
+   "E",
+   "#",
+   "R",
+   "O",
+   "D"
+  ],
+  [
+   "M",
+   "O",
+   "D",
+   "U",
+   "L",
+   "E",
+   "#",
+   "S",
+   "C",
+   "O",
+   "P",
+   "E"
+  ],
+  [
+   "#",
+   "B",
+   "I",
+   "T",
+   "E",
+   "#",
+   "#",
+   "T",
+   "O",
+   "W",
+   "E",
+   "L"
+  ],
+  [
+   "L",
+   "I",
+   "S",
+   "Z",
+   "T",
+   "#",
+   "#",
+   "S",
+   "T",
+   "S",
+   "C",
+   "I"
+  ]
+ ],
+ "rows": 12,
+ "cols": 12,
+ "placements": [
+  {
+   "word": "CEPHEID",
+   "clue": "Pulsating variable star used as a rung on the cosmic distance ladder",
+   "row": 0,
+   "col": 0,
+   "direction": "across",
+   "number": 1,
+   "is_themed": true
+  },
+  {
+   "word": "CIO",
+   "clue": "Tech chief",
+   "row": 0,
+   "col": 0,
+   "direction": "down",
+   "number": 1,
+   "is_themed": false
+  },
+  {
+   "word": "ENVY",
+   "clue": "Feeling of grudging desire for what another has",
+   "row": 0,
+   "col": 1,
+   "direction": "down",
+   "number": 2,
+   "is_themed": false
+  },
+  {
+   "word": "PREACHER",
+   "clue": "One who delivers sermons",
+   "row": 0,
+   "col": 2,
+   "direction": "down",
+   "number": 3,
+   "is_themed": false
+  },
+  {
+   "word": "HORTON",
+   "clue": "Dr. Seuss pachyderm",
+   "row": 0,
+   "col": 3,
+   "direction": "down",
+   "number": 4,
+   "is_themed": false
+  },
+  {
+   "word": "EASED",
+   "clue": "Alleviated",
+   "row": 0,
+   "col": 4,
+   "direction": "down",
+   "number": 5,
+   "is_themed": false
+  },
+  {
+   "word": "IDES",
+   "clue": "Roman calendar date; the 15th of March",
+   "row": 0,
+   "col": 5,
+   "direction": "down",
+   "number": 6,
+   "is_themed": false
+  },
+  {
+   "word": "WOW",
+   "clue": "Reaction to something amazing",
+   "row": 0,
+   "col": 9,
+   "direction": "across",
+   "number": 7,
+   "is_themed": false
+  },
+  {
+   "word": "WHEELBARROWS",
+   "clue": "One-wheeled garden carts",
+   "row": 0,
+   "col": 9,
+   "direction": "down",
+   "number": 7,
+   "is_themed": false
+  },
+  {
+   "word": "WHALE",
+   "clue": "Ocean giant",
+   "row": 0,
+   "col": 11,
+   "direction": "down",
+   "number": 8,
+   "is_themed": false
+  },
+  {
+   "word": "INROAD",
+   "clue": "'Incursion', 'Encroachment'",
+   "row": 1,
+   "col": 0,
+   "direction": "across",
+   "number": 9,
+   "is_themed": false
+  },
+  {
+   "word": "OVERSEER",
+   "clue": "One who supervises a project",
+   "row": 2,
+   "col": 0,
+   "direction": "across",
+   "number": 10,
+   "is_themed": false
+  },
+  {
+   "word": "RIB",
+   "clue": "Bone in the chest",
+   "row": 2,
+   "col": 7,
+   "direction": "down",
+   "number": 11,
+   "is_themed": false
+  },
+  {
+   "word": "ERA",
+   "clue": "Historical period",
+   "row": 2,
+   "col": 9,
+   "direction": "across",
+   "number": 12,
+   "is_themed": false
+  },
+  {
+   "word": "RAGES",
+   "clue": "Fumes with anger",
+   "row": 2,
+   "col": 10,
+   "direction": "down",
+   "number": 13,
+   "is_themed": false
+  },
+  {
+   "word": "YATES",
+   "clue": "Poet William Butler __",
+   "row": 3,
+   "col": 1,
+   "direction": "across",
+   "number": 14,
+   "is_themed": false
+  },
+  {
+   "word": "IDEAL",
+   "clue": "Perfect standard to aim for",
+   "row": 3,
+   "col": 7,
+   "direction": "across",
+   "number": 15,
+   "is_themed": false
+  },
+  {
+   "word": "DUANE",
+   "clue": "Guitarist Allman",
+   "row": 3,
+   "col": 8,
+   "direction": "down",
+   "number": 16,
+   "is_themed": false
+  },
+  {
+   "word": "COD",
+   "clue": "North Atlantic food fish",
+   "row": 4,
+   "col": 2,
+   "direction": "across",
+   "number": 17,
+   "is_themed": false
+  },
+  {
+   "word": "BULGE",
+   "clue": "Dense central region of the Milky Way targeted by one of Roman's time-domain surveys",
+   "row": 4,
+   "col": 7,
+   "direction": "across",
+   "number": 18,
+   "is_themed": true
+  },
+  {
+   "word": "HAHN",
+   "clue": "Physics Nobelist Otto",
+   "row": 5,
+   "col": 0,
+   "direction": "across",
+   "number": 19,
+   "is_themed": false
+  },
+  {
+   "word": "HAD",
+   "clue": "Possessed",
+   "row": 5,
+   "col": 0,
+   "direction": "down",
+   "number": 19,
+   "is_themed": false
+  },
+  {
+   "word": "ALA",
+   "clue": "In the style of",
+   "row": 5,
+   "col": 1,
+   "direction": "down",
+   "number": 20,
+   "is_themed": false
+  },
+  {
+   "word": "ABE",
+   "clue": "Nickname of Lincoln",
+   "row": 5,
+   "col": 8,
+   "direction": "across",
+   "number": 21,
+   "is_themed": false
+  },
+  {
+   "word": "ALE",
+   "clue": "Beer made with top-fermenting yeast",
+   "row": 6,
+   "col": 0,
+   "direction": "across",
+   "number": 22,
+   "is_themed": false
+  },
+  {
+   "word": "ORA",
+   "clue": "Singer Rita __",
+   "row": 6,
+   "col": 4,
+   "direction": "across",
+   "number": 23,
+   "is_themed": false
+  },
+  {
+   "word": "OMELET",
+   "clue": "Beaten eggs or an egg mixture cooked until just set; may be folded around e.g. ham or cheese or jelly",
+   "row": 6,
+   "col": 4,
+   "direction": "down",
+   "number": 23,
+   "is_themed": false
+  },
+  {
+   "word": "RAVE",
+   "clue": "All-night dance party",
+   "row": 6,
+   "col": 5,
+   "direction": "down",
+   "number": 24,
+   "is_themed": false
+  },
+  {
+   "word": "ATE",
+   "clue": "Had dinner",
+   "row": 6,
+   "col": 6,
+   "direction": "down",
+   "number": 25,
+   "is_themed": false
+  },
+  {
+   "word": "NAS",
+   "clue": "'N.Y. State of Mind' rapper",
+   "row": 6,
+   "col": 8,
+   "direction": "across",
+   "number": 26,
+   "is_themed": false
+  },
+  {
+   "word": "DARKMATTER",
+   "clue": "Invisible substance whose gravity shapes galaxies",
+   "row": 7,
+   "col": 0,
+   "direction": "across",
+   "number": 27,
+   "is_themed": true
+  },
+  {
+   "word": "KLUTZ",
+   "clue": "Clumsy sort",
+   "row": 7,
+   "col": 3,
+   "direction": "down",
+   "number": 28,
+   "is_themed": false
+  },
+  {
+   "word": "TESTS",
+   "clue": "Exams",
+   "row": 7,
+   "col": 7,
+   "direction": "down",
+   "number": 29,
+   "is_themed": false
+  },
+  {
+   "word": "LEVEE",
+   "clue": "River embankment",
+   "row": 8,
+   "col": 3,
+   "direction": "across",
+   "number": 30,
+   "is_themed": false
+  },
+  {
+   "word": "ROD",
+   "clue": "Part of a cone or retina",
+   "row": 8,
+   "col": 9,
+   "direction": "across",
+   "number": 31,
+   "is_themed": false
+  },
+  {
+   "word": "OPEC",
+   "clue": "Oil cartel, briefly",
+   "row": 8,
+   "col": 10,
+   "direction": "down",
+   "number": 32,
+   "is_themed": false
+  },
+  {
+   "word": "DELI",
+   "clue": "A shop selling ready-to-eat food products",
+   "row": 8,
+   "col": 11,
+   "direction": "down",
+   "number": 33,
+   "is_themed": false
+  },
+  {
+   "word": "MODULE",
+   "clue": "Section of a spacecraft",
+   "row": 9,
+   "col": 0,
+   "direction": "across",
+   "number": 34,
+   "is_themed": false
+  },
+  {
+   "word": "OBI",
+   "clue": "Sash worn with a kimono",
+   "row": 9,
+   "col": 1,
+   "direction": "down",
+   "number": 35,
+   "is_themed": false
+  },
+  {
+   "word": "DIS",
+   "clue": "Show disrespect to",
+   "row": 9,
+   "col": 2,
+   "direction": "down",
+   "number": 36,
+   "is_themed": false
+  },
+  {
+   "word": "SCOPE",
+   "clue": "Extent or range",
+   "row": 9,
+   "col": 7,
+   "direction": "across",
+   "number": 37,
+   "is_themed": false
+  },
+  {
+   "word": "COT",
+   "clue": "Simple folding bed",
+   "row": 9,
+   "col": 8,
+   "direction": "down",
+   "number": 38,
+   "is_themed": false
+  },
+  {
+   "word": "BITE",
+   "clue": "Fish on a line, e.g.",
+   "row": 10,
+   "col": 1,
+   "direction": "across",
+   "number": 39,
+   "is_themed": false
+  },
+  {
+   "word": "TOWEL",
+   "clue": "Cloth for drying off",
+   "row": 10,
+   "col": 7,
+   "direction": "across",
+   "number": 40,
+   "is_themed": false
+  },
+  {
+   "word": "LISZT",
+   "clue": "Hungarian composer and piano virtuoso (1811-1886)",
+   "row": 11,
+   "col": 0,
+   "direction": "across",
+   "number": 41,
+   "is_themed": false
+  },
+  {
+   "word": "STSCI",
+   "clue": "Institute that will help operate Roman science programs",
+   "row": 11,
+   "col": 7,
+   "direction": "across",
+   "number": 42,
+   "is_themed": true
+  }
+ ]
+}
